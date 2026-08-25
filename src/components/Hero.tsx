@@ -19,11 +19,10 @@ const Stat: React.FC<StatProps> = ({ number, label }) => {
 
 const Hero: React.FC = () => {
   return (
-    <section className='relative min-h-[100vh] w-full overflow-hidden bg-neutral-950 text-white flex justify-center items-center'>
+    <section className='relative min-h-[100vh] w-full overflow-hidden text-white flex justify-center items-center'>
       <div className='absolute inset-0'>
         <img
-          src='/hero-background-image.webp'
-          alt='پس‌زمینه قهرمان'
+          src='/image 3.png'
           className='h-full w-full object-cover'
           fetchPriority='high'
           loading='eager'

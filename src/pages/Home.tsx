@@ -10,7 +10,7 @@ const Home: React.FC = () => {
         <Hero />
         <div
           className='w-full flex flex-col items-center justify-start
-                        bg-gradient-to-b from-[#020201] to-[#00646B]'
+                        bg-gradient-to-br from-[#000105] via-[#250033] to-[#50006B]'
         >
           <div className='w-full max-w-[95vw] md:max-w-[85vw] flex flex-col items-center'>
             <Specialties />

@@ -60,7 +60,8 @@ const Navbar: React.FC = () => {
   const avatarUrl = user?.user_metadata?.avatar_url
 
   return (
-    <div className='fixed top-0 md:top-10 w-full md:max-w-[85vw] h-[10vh] border border-white/10 bg-white/10 p-6 backdrop-blur-[10px] shadow-[0_10px_60px_-15px_rgba(0,0,0,0.6)] z-20 md:rounded-[40px]'>
+    <div className='fixed top-0 md:top-5 w-full md:max-w-[85vw] h-[10vh] border border-[#E28BFE99] bg-[#EF2CC51A] p-6 backdrop-blur-[40px] shadow-[0_0_40px_-60px_rgba(0,0,0,0.6)] 
+z-20 md:rounded-[40px]'>
       <div className='flex h-full w-full items-center justify-between'>
         <img src='/logo-nav.png' alt='لوگو' className='md:w-16 w-14' />
 
@@ -175,10 +176,9 @@ const Navbar: React.FC = () => {
             <NavLink
               to='/register'
               onClick={() => setMenuOpen(false)}
-              className='rounded-[16px] bg-[#D9D9D9] px-[20px] py-[12px] text-neutral-900 font-semibold hover:bg-white transition'
+              className='rounded-[20px] px-[20px] py-[12px] text-white font-bold bg-[#A855F71A] border border-[#A855F766]'
             >
-              ورود / ثبت نام
-            </NavLink>
+              ورود به نرم افزار            </NavLink>
           )}
         </div>
 

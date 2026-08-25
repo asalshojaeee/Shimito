@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 const Layout: React.FC = () => {
   return (
     <main
-      className="min-h-screen h-full text-white bg-gradient-to-b from-[#020201] to-[#00646B]"
+      className="min-h-screen h-full text-white bg-gradient-to-br from-[#000105] via-[#250033] to-[#50006B]"
     >
       <div className="relative flex flex-col items-center">
         {/* <Navbar /> */}
