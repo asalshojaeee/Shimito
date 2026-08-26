@@ -6,7 +6,7 @@ import { supabase } from '../data/supabaseClient'
 
 const linkBase = 'px-2 py-1 transition hover:text-white'
 const linkActive =
-  'text-white after:block after:h-[2px] after:rounded after:bg-white/60 after:mt-1'
+  'text-white '
 const linkInactive = 'text-white/80'
 
 const Navbar: React.FC = () => {
@@ -60,48 +60,47 @@ const Navbar: React.FC = () => {
   const avatarUrl = user?.user_metadata?.avatar_url
 
   return (
-    <div className='fixed top-0 md:top-5 w-full md:max-w-[85vw] h-[10vh] border border-[#E28BFE99] bg-[#EF2CC51A] p-6 backdrop-blur-[40px] shadow-[0_0_40px_-60px_rgba(0,0,0,0.6)] 
-z-20 md:rounded-[40px]'>
+    <div className='fixed top-0 md:top-3 w-full md:max-w-[85vw] h-[10vh] border border-[#E28BFE99] bg-[#EF2CC51A] p-6 backdrop-blur-[40px] shadow-[0_0_40px_-60px_rgba(0,0,0,0.6)] 
+z-20 md:rounded-[30px]'>
       <div className='flex h-full w-full items-center justify-between'>
         <img src='/logo-nav.png' alt='لوگو' className='md:w-16 w-14' />
 
-        <nav className='hidden md:flex items-center gap-6'>
+        <nav className='hidden md:flex items-center gap-6 font-normal text-white'>
           <NavLink
             to='/about'
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
             }
           >
-            درباره ما
-          </NavLink>
+            حساب کاربری          </NavLink>
           <NavLink
             to='/services'
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
+            }
+          >
+            گزینه ها
+          </NavLink>
+          <NavLink
+            to='/product'
+            className={({ isActive }) =>
+              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
             }
           >
             خدمات
           </NavLink>
           <NavLink
-            to='/product'
-            className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
-            }
-          >
-            محصول
-          </NavLink>
-          <NavLink
             to='/our-team'
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
             }
           >
-            اعضا
+            محصولات
           </NavLink>
           <NavLink
             to='/Committees'
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
             }
           >
             کمیته ها
@@ -109,11 +108,21 @@ z-20 md:rounded-[40px]'>
           <NavLink
             to='/'
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${isActive ? linkActive : linkInactive}  border-0 `
             }
           >
-            صفحه اصلی
-          </NavLink>
+             <span
+    className="text-white"
+    style={{
+      filter:
+        'drop-shadow(0 0 40px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.9)) drop-shadow(0 0 2px rgba(255,255,255,1))',
+    }}
+  >
+
+    خانه
+  </span>
+            
+                    </NavLink>
         </nav>
 
         <div ref={userMenuRef} className='relative hidden md:flex'>
@@ -155,7 +164,7 @@ z-20 md:rounded-[40px]'>
                   <NavLink
                     to='/onboarding'
                     onClick={() => setOpenUserMenu(false)}
-                    className='block px-4 py-3 text-sm text-right text-gray-300 hover:bg-gray-600'
+                    className='block px-4 py-3 text-sm text-right text-white hover:bg-gray-600'
                   >
                     ثبت نام شرکت | افراد
                   </NavLink>
@@ -176,7 +185,7 @@ z-20 md:rounded-[40px]'>
             <NavLink
               to='/register'
               onClick={() => setMenuOpen(false)}
-              className='rounded-[20px] px-[20px] py-[12px] text-white font-bold bg-[#A855F71A] border border-[#A855F766]'
+              className='rounded-[20px] px-[20px] py-[12px] text-[20px] text-white font-bold bg-[#A855F71A] border border-[#A855F766]'
             >
               ورود به نرم افزار            </NavLink>
           )}
@@ -199,8 +208,7 @@ z-20 md:rounded-[40px]'>
               `${linkBase} ${isActive ? linkActive : linkInactive}`
             }
           >
-            صفحه اصلی
-          </NavLink>
+            خانه          </NavLink>
           <NavLink
             to='/Committees'
             onClick={() => setMenuOpen(false)}
@@ -217,7 +225,7 @@ z-20 md:rounded-[40px]'>
               `${linkBase} ${isActive ? linkActive : linkInactive}`
             }
           >
-            اعضا
+            محصولات
           </NavLink>
           <NavLink
             to='/product'
@@ -244,8 +252,7 @@ z-20 md:rounded-[40px]'>
               `${linkBase} ${isActive ? linkActive : linkInactive}`
             }
           >
-            درباره ما
-          </NavLink>
+            گزینه ها          </NavLink>
           <div ref={userMenuRef} className='relative '>
             {loadingUser ? (
               <span className='inline-block w-6 h-6 border-4 border-t-transparent border-blue-600 rounded-full animate-spin'></span>
