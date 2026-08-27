@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
 
 
       {/* ================= DESKTOP ================= */}
-      <div className='relative hidden md:grid w-full max-w-[85vw] grid-cols-2 gap-12 lg:gap-24 mt-16'>
+      <div className='relative hidden md:grid w-full max-w-[85vw] grid-cols-2 gap-5 lg:gap-24 mt-16'>
 
         {/* ================= RIGHT : TEAM ================= */}
         <div className='col-start-2 row-start-1 flex items-center justify-center w-full'>
