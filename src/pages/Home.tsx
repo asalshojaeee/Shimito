@@ -1,6 +1,6 @@
 import Brands from '../components/Brands'
 import Hero from '../components/Hero'
-import Products from '../components/Products'
+import Products from '../components/ProductsSlider'
 import Specialties from '../components/Specialties'
 import Team from '../components/Team'
 

@@ -4,6 +4,8 @@ import Layout from './Layout/Layout'
 import CompanyPage from './components/CompanyPage'
 import Loader from './components/Loader'
 import ProtectedRoute from './components/ProtectedRoute'
+import Products from './components/ProductsSlider'
+import ProductShowcasePage from './components/ProductShowcasePage'
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const OurTeam = lazy(() => import('./pages/OurTeam'))
@@ -51,10 +53,10 @@ export default function App() {
           }
         />
         <Route
-          path='/our-team'
+          path='/our-products'
           element={
             <Suspense fallback={<Loader />}>
-              <OurTeam />
+              <ProductShowcasePage />
             </Suspense>
           }
         />

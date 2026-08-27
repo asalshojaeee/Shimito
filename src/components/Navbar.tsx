@@ -90,7 +90,7 @@ z-20 md:rounded-[30px]'>
             خدمات
           </NavLink>
           <NavLink
-            to='/our-team'
+            to='/our-products'
             className={({ isActive }) =>
               `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
             }
