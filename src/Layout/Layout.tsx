@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 const Layout: React.FC = () => {
   return (
-    <main className="min-h-screen text-white bg-gradient-to-br from-[#000105] via-[#50006B] to-[#A855F7]">
+    <main className="min-h-screen text-white ">
       <div className="flex min-h-screen flex-col items-center">
 
         <Navbar />

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router'
 import { RxHamburgerMenu } from 'react-icons/rx'
-import { IoClose } from 'react-icons/io5' // برای آیکن بستن منو
+import { IoClose } from 'react-icons/io5'
 import { supabase } from '../data/supabaseClient'
 
 const linkBase = 'px-2 py-1 transition hover:text-white'
@@ -60,8 +60,13 @@ const Navbar: React.FC = () => {
   const avatarUrl = user?.user_metadata?.avatar_url
 
   return (
-    <div className='fixed top-0 md:top-3 w-full md:max-w-[85vw] h-[10vh] border border-[#E28BFE99] bg-[#EF2CC51A] p-6 backdrop-blur-[40px] shadow-[0_0_40px_-60px_rgba(0,0,0,0.6)] 
-z-20 md:rounded-[30px]'>
+    <div
+
+      className='fixed top-0 md:top-3 w-full md:max-w-[85vw] h-[10vh] border border-[#7C5CFF] shadow-lg shadow-[#E28BFE66]drop-shadow-lg shadow-[#E28BFE66] bg-[#EF2CC51A] p-6 backdrop-blur-[40px] shadow-[0_0_40px_-60px_rgba(0,0,0,0.6)] 
+      z-20 md:rounded-[30px]'
+
+
+    >
       <div className='flex h-full w-full items-center justify-between'>
         <img src='/logo-nav.png' alt='لوگو' className='md:w-16 w-14' />
 
@@ -111,18 +116,18 @@ z-20 md:rounded-[30px]'>
               `${linkBase} ${isActive ? linkActive : linkInactive}  border-0 `
             }
           >
-             <span
-    className="text-white"
-    style={{
-      filter:
-        'drop-shadow(0 0 40px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.9)) drop-shadow(0 0 2px rgba(255,255,255,1))',
-    }}
-  >
+            <span
+              className="text-white"
+              style={{
+                filter:
+                  'drop-shadow(0 0 40px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.9)) drop-shadow(0 0 2px rgba(255,255,255,1))',
+              }}
+            >
 
-    خانه
-  </span>
-            
-                    </NavLink>
+              خانه
+            </span>
+
+          </NavLink>
         </nav>
 
         <div ref={userMenuRef} className='relative hidden md:flex'>
