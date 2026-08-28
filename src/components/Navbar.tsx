@@ -1,40 +1,45 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { NavLink } from 'react-router'
-import { RxHamburgerMenu } from 'react-icons/rx'
-import { IoClose } from 'react-icons/io5'
-import { supabase } from '../data/supabaseClient'
+import React, { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoClose } from "react-icons/io5";
+import { supabase } from "../data/supabaseClient";
 
-const linkBase = 'px-2 py-1 transition hover:text-white'
+const linkBase =
+  "px-2 py-1 transition-all duration-300 hover:text-white hover:[filter:drop-shadow(0_0_8px_rgba(255,255,255,0.9))_drop-shadow(0_0_18px_rgba(255,255,255,0.7))]";
+
 const linkActive =
-  'text-white '
-const linkInactive = 'text-white/80'
+  "text-white [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.9))_drop-shadow(0_0_18px_rgba(255,255,255,0.7))]";
+
+const linkInactive = "text-white/80";
 
 const Navbar: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [user, setUser] = useState<any>(null)
-  const [openUserMenu, setOpenUserMenu] = useState(false)
-  const userMenuRef = useRef<HTMLDivElement>(null)
-  const [loadingUser, setLoadingUser] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const [openUserMenu, setOpenUserMenu] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
+  const [loadingUser, setLoadingUser] = useState(true);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev)
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
+  // =========================
+  // Supabase Auth  // =========================
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user)
-      setLoadingUser(false)
-    })
+      setUser(data.user);
+      setLoadingUser(false);
+    });
 
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null)
-        setLoadingUser(false)
-      }
-    )
+    const {
+      data: listener,
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setLoadingUser(false);
+    });
 
     return () => {
-      listener.subscription.unsubscribe()
-    }
-  }, [])
+      listener.subscription.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -42,144 +47,183 @@ const Navbar: React.FC = () => {
         userMenuRef.current &&
         !userMenuRef.current.contains(event.target as Node)
       ) {
-        setOpenUserMenu(false)
+        setOpenUserMenu(false);
       }
-    }
+    };
 
     if (openUserMenu) {
-      document.addEventListener('mousedown', handleClickOutside)
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [openUserMenu])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [openUserMenu]);
 
-  const avatarUrl = user?.user_metadata?.avatar_url
+  const avatarUrl = user?.user_metadata?.avatar_url;
 
   return (
     <div
+      className="
+        fixed
+        top-0
+        md:top-3
+        w-full
+        md:max-w-[85vw]
+        h-[10vh]
+        z-20
+        p-6
 
-      className='fixed top-0 md:top-3 w-full md:max-w-[85vw] h-[10vh] border border-[#7C5CFF] shadow-lg shadow-[#E28BFE66]drop-shadow-lg shadow-[#E28BFE66] bg-[#EF2CC51A] p-6 backdrop-blur-[40px] shadow-[0_0_40px_-60px_rgba(0,0,0,0.6)] 
-      z-20 md:rounded-[30px]'
+        border
+        border-[#7C5CFF]
 
+        bg-[#EF2CC51A]
+        backdrop-blur-[40px]
 
+        shadow-[0_0_40px_-15px_rgba(226,139,254,0.4)]
+
+        md:rounded-[30px]
+      "
     >
-      <div className='flex h-full w-full items-center justify-between'>
-        <img src='/logo-nav.png' alt='لوگو' className='md:w-16 w-14' />
+  
+      <div className="flex h-full w-full items-center justify-between">
 
-        <nav className='hidden md:flex items-center gap-6 font-normal text-white'>
+        {/* Logo */}
+        <img
+          src="/logo-nav.png"
+          alt="لوگو"
+          className="w-14 md:w-16"
+        />
+
+    
+        <nav className="hidden md:flex items-center gap-6 font-normal text-white">
+
           <NavLink
-            to='/about'
+            to="/about"
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
-            حساب کاربری          </NavLink>
+            حساب کاربری
+          </NavLink>
+
           <NavLink
-            to='/services'
+            to="/services"
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
             گزینه ها
           </NavLink>
+
           <NavLink
-            to='/product'
+            to="/product"
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
             خدمات
           </NavLink>
+
           <NavLink
-            to='/our-products'
+            to="/our-products"
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
             محصولات
           </NavLink>
+
           <NavLink
-            to='/Committees'
+            to="/Committees"
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}text-white`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
             کمیته ها
           </NavLink>
+
           <NavLink
-            to='/'
+            to="/"
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}  border-0 `
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              } border-0`
             }
           >
-            <span
-              className="text-white"
-              style={{
-                filter:
-                  'drop-shadow(0 0 40px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.9)) drop-shadow(0 0 2px rgba(255,255,255,1))',
-              }}
-            >
-
-              خانه
-            </span>
-
+            خانه
           </NavLink>
         </nav>
 
-        <div ref={userMenuRef} className='relative hidden md:flex'>
+      
+      
+        <div
+          ref={userMenuRef}
+          className="relative hidden md:flex"
+        >
           {loadingUser ? (
-            <span className='inline-block w-6 h-6 border-4 border-t-transparent border-blue-600 rounded-full animate-spin'></span>
+            <span className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-t-transparent border-blue-600" />
           ) : user ? (
             <>
               {/* Avatar */}
               <button
-                onClick={() => setOpenUserMenu((prev) => !prev)}
-                className='focus:outline-none'
+                onClick={() =>
+                  setOpenUserMenu((prev) => !prev)
+                }
+                className="focus:outline-none"
               >
                 {avatarUrl ? (
                   <img
                     src={avatarUrl}
-                    alt='user avatar'
-                    referrerPolicy='no-referrer'
-                    className='w-11 h-11 rounded-full object-cover border border-white/30'
+                    alt="user avatar"
+                    referrerPolicy="no-referrer"
+                    className="h-11 w-11 rounded-full object-cover border border-white/30"
                   />
                 ) : (
                   <img
-                    src='/user.webp'
-                    alt='default avatar'
-                    className='w-11 h-11 rounded-full object-cover border border-white/30'
+                    src="/user.webp"
+                    alt="default avatar"
+                    className="h-11 w-11 rounded-full object-cover border border-white/30"
                   />
                 )}
               </button>
 
+             
               {openUserMenu && (
-                <div className='absolute top-full right-0 mt-3 w-52 rounded-xl bg-gray-500 shadow-lg overflow-hidden z-50'>
+                <div className="absolute right-0 top-full z-50 mt-3 w-52 overflow-hidden rounded-xl bg-gray-500 shadow-lg">
+
                   <NavLink
-                    to='/profile'
+                    to="/profile"
                     onClick={() => setOpenUserMenu(false)}
-                    className='block px-4 py-3 text-right text-sm text-gray-300  hover:bg-gray-600'
+                    className="block px-4 py-3 text-right text-sm text-gray-300 hover:bg-gray-600"
                   >
                     پروفایل کاربری
                   </NavLink>
 
                   <NavLink
-                    to='/onboarding'
+                    to="/onboarding"
                     onClick={() => setOpenUserMenu(false)}
-                    className='block px-4 py-3 text-sm text-right text-white hover:bg-gray-600'
+                    className="block px-4 py-3 text-right text-sm text-white hover:bg-gray-600"
                   >
                     ثبت نام شرکت | افراد
                   </NavLink>
 
                   <button
                     onClick={async () => {
-                      await supabase.auth.signOut()
-                      setOpenUserMenu(false)
+                      await supabase.auth.signOut();
+                      setOpenUserMenu(false);
                     }}
-                    className='w-full text-right px-4 py-3 text-sm text-red-600 hover:bg-gray-600'
+                    className="w-full px-4 py-3 text-right text-sm text-red-600 hover:bg-gray-600"
                   >
                     خروج
                   </button>
@@ -188,125 +232,195 @@ const Navbar: React.FC = () => {
             </>
           ) : (
             <NavLink
-              to='/register'
+              to="/register"
               onClick={() => setMenuOpen(false)}
-              className='rounded-[20px] px-[20px] py-[12px] text-[20px] text-white font-bold bg-[#A855F71A] border border-[#A855F766]'
+              className="
+                rounded-[20px]
+                border
+                border-[#A855F766]
+                bg-[#A855F71A]
+                px-[20px]
+                py-[12px]
+                text-[20px]
+                font-bold
+                text-white
+              "
             >
-              ورود به نرم افزار            </NavLink>
+              ورود به نرم افزار
+            </NavLink>
           )}
         </div>
 
+    
         <button
-          className='md:hidden bg-white/10 text-white text-3xl focus:outline-none  p-1 rounded-[8px]'
+          className="
+            rounded-[8px]
+            bg-white/10
+            p-1
+            text-3xl
+            text-white
+            focus:outline-none
+            md:hidden
+          "
           onClick={toggleMenu}
         >
           {menuOpen ? <IoClose /> : <RxHamburgerMenu />}
         </button>
       </div>
 
+
       {menuOpen && (
-        <div className='absolute top-[100%] left-0 w-full bg-black/60 backdrop-blur-md rounded-[30px] flex flex-col items-center py-4 gap-4 text-white animate-slideDown z-10'>
+        <div
+          className="
+            absolute
+            left-0
+            top-[100%]
+            z-10
+            flex
+            w-full
+            animate-slideDown
+            flex-col
+            items-center
+            gap-4
+            rounded-[30px]
+            bg-black/60
+            py-4
+            text-white
+            backdrop-blur-md
+          "
+        >
           <NavLink
-            to='/'
+            to="/"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
-            خانه          </NavLink>
+            خانه
+          </NavLink>
+
           <NavLink
-            to='/Committees'
+            to="/Committees"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
             کمیته ها
           </NavLink>
+
           <NavLink
-            to='/our-team'
+            to="/our-team"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
             محصولات
           </NavLink>
+
           <NavLink
-            to='/product'
+            to="/product"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
             محصول
           </NavLink>
+
           <NavLink
-            to='/services'
+            to="/services"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
             خدمات
           </NavLink>
+
           <NavLink
-            to='/about'
+            to="/about"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
+              `${linkBase} ${
+                isActive ? linkActive : linkInactive
+              }`
             }
           >
-            گزینه ها          </NavLink>
-          <div ref={userMenuRef} className='relative '>
+            گزینه ها
+          </NavLink>
+
+          {/* Mobile User */}
+          <div
+            ref={userMenuRef}
+            className="relative"
+          >
             {loadingUser ? (
-              <span className='inline-block w-6 h-6 border-4 border-t-transparent border-blue-600 rounded-full animate-spin'></span>
+              <span className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-t-transparent border-blue-600" />
             ) : user ? (
               <>
                 <button
-                  onClick={() => setOpenUserMenu((prev) => !prev)}
-                  className='focus:outline-none'
+                  onClick={() =>
+                    setOpenUserMenu((prev) => !prev)
+                  }
+                  className="focus:outline-none"
                 >
                   {avatarUrl ? (
                     <img
                       src={avatarUrl}
-                      alt='user avatar'
-                      referrerPolicy='no-referrer'
-                      className='w-11 h-11 rounded-full object-cover border border-white/30'
+                      alt="user avatar"
+                      referrerPolicy="no-referrer"
+                      className="h-11 w-11 rounded-full object-cover border border-white/30"
                     />
                   ) : (
                     <img
-                      src='/user.webp'
-                      alt='default avatar'
-                      className='w-11 h-11 rounded-full object-cover border border-white/30'
+                      src="/user.webp"
+                      alt="default avatar"
+                      className="h-11 w-11 rounded-full object-cover border border-white/30"
                     />
                   )}
                 </button>
 
                 {openUserMenu && (
-                  <div className='absolute  right-0 mt-3 w-52 rounded-xl bg-gray-500 shadow-lg overflow-hidden z-50'>
+                  <div className="absolute right-0 mt-3 w-52 overflow-hidden rounded-xl bg-gray-500 shadow-lg">
+
                     <NavLink
-                      to='/profile'
-                      onClick={() => setOpenUserMenu(false)}
-                      className='block px-4 py-3 text-right text-sm text-gray-300  hover:bg-gray-600'
+                      to="/profile"
+                      onClick={() =>
+                        setOpenUserMenu(false)
+                      }
+                      className="block px-4 py-3 text-right text-sm text-gray-300 hover:bg-gray-600"
                     >
                       پروفایل کاربری
                     </NavLink>
 
                     <NavLink
-                      to='/onboarding'
-                      onClick={() => setOpenUserMenu(false)}
-                      className='block px-4 py-3 text-sm text-right text-gray-300 hover:bg-gray-600'
+                      to="/onboarding"
+                      onClick={() =>
+                        setOpenUserMenu(false)
+                      }
+                      className="block px-4 py-3 text-right text-sm text-gray-300 hover:bg-gray-600"
                     >
                       ثبت نام شرکت | افراد
                     </NavLink>
 
                     <button
                       onClick={async () => {
-                        await supabase.auth.signOut()
-                        setOpenUserMenu(false)
+                        await supabase.auth.signOut();
+                        setOpenUserMenu(false);
                       }}
-                      className='w-full text-right px-4 py-3 text-sm text-red-600 hover:bg-gray-600'
+                      className="w-full px-4 py-3 text-right text-sm text-red-600 hover:bg-gray-600"
                     >
                       خروج
                     </button>
@@ -315,9 +429,18 @@ const Navbar: React.FC = () => {
               </>
             ) : (
               <NavLink
-                to='/register'
+                to="/register"
                 onClick={() => setMenuOpen(false)}
-                className='rounded-[16px] bg-[#D9D9D9] px-[20px] py-[12px] text-neutral-900 font-semibold hover:bg-white transition'
+                className="
+                  rounded-[16px]
+                  bg-[#D9D9D9]
+                  px-[20px]
+                  py-[12px]
+                  font-semibold
+                  text-neutral-900
+                  transition
+                  hover:bg-white
+                "
               >
                 ورود / ثبت نام
               </NavLink>
@@ -326,7 +449,7 @@ const Navbar: React.FC = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

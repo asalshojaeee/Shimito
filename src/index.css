@@ -15,9 +15,9 @@
     font-family: 'vazirmatn';
 }
 
-body{
-  background: linear-gradient(#000105,#50006B,#A855F7);
-}
+/* body{
+  background: linear-gradient(#000105,#50006B,#41df6b);
+} */
 
 /* @layer base {
   :root {

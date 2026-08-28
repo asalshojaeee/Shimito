@@ -98,7 +98,7 @@ const Toolbar: React.FC<{
   ];
 
   return (
-    <div className="mt-28 flex w-full max-w-[1900px] flex-col-reverse items-stretch justify-start gap-3 px-8 sm:flex-row sm:items-center sm:justify-start">
+    <div className="pt-28 flex w-full max-w-[1900px] flex-col-reverse items-stretch justify-start gap-3 px-8 sm:flex-row sm:items-center sm:justify-start ">
       <div className="relative w-full max-w-[420px]">
         <Search className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
 
@@ -240,17 +240,17 @@ const ProductShowCase: React.FC = () => {
   );
 
   return (
-    <div
-      dir="rtl"
-      className="
-        min-h-screen
-        bg-[#0b0714]
-        bg-[radial-gradient(circle_at_20%_30%,rgba(168,85,247,0.18),transparent_45%),radial-gradient(circle_at_85%_30%,rgba(217,70,239,0.12),transparent_40%),radial-gradient(circle_at_50%_100%,rgba(59,7,100,0.35),transparent_55%)]
-        pb-24
-        font-[system-ui]
-        text-white
-      "
-    >
+  <div
+    dir="rtl"
+    className="
+      min-h-screen
+      w-full
+      bg-[linear-gradient(135deg,#02000A_0%,#140024_35%,#2B0147_65%,#0B1521_100%)]
+      pb-24
+      font-[system-ui]
+      text-white
+    "
+  >
       <Toolbar
         query={query}
         onQueryChange={setQuery}
