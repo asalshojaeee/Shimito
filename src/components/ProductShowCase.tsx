@@ -5,6 +5,7 @@ import {
   ChevronLeft,
   FlaskConical,
 } from "lucide-react";
+import { Link } from "react-router";
 
 interface Product {
   id: number;
@@ -149,7 +150,11 @@ const Toolbar: React.FC<{
 };
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => (
-  <article className="group flex flex-col overflow-hidden rounded-3xl border border-[#FFFFFF1A] bg-[#FFFFFF1A] transition-all w-[360px] items-center justify-center">
+
+
+
+  <Link to={'/product-details'}>
+    <article className="group flex flex-col overflow-hidden rounded-3xl border border-[#FFFFFF1A] bg-[#FFFFFF1A] transition-all w-[360px] items-center justify-center">
     <div className="relative h-52 w-full overflow-hidden">
       <img
         src={product.image}
@@ -229,6 +234,10 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => (
       </div>
     </div>
   </article>
+  
+  
+  </Link>
+
 );
 
 const ProductShowCase: React.FC = () => {

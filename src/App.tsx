@@ -4,11 +4,10 @@ import Layout from './Layout/Layout'
 import CompanyPage from './components/CompanyPage'
 import Loader from './components/Loader'
 import ProtectedRoute from './components/ProtectedRoute'
-import Products from './components/ProductsSlider'
 import ProductShowcasePage from './components/ProductShowCase'
+import ProductDetails from './components/ProductDetails'
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
-const OurTeam = lazy(() => import('./pages/OurTeam'))
 const MemberPage = lazy(() => import('./pages/MemeberPage'))
 const ComingSoon = lazy(() => import('./components/Comminsoon'))
 const RegisterCompany = lazy(() => import('./pages/RegisterCompany'))
@@ -57,6 +56,14 @@ export default function App() {
           element={
             <Suspense fallback={<Loader />}>
               <ProductShowcasePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/product-details'
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProductDetails />
             </Suspense>
           }
         />
@@ -122,6 +129,10 @@ export default function App() {
           </Suspense>
         }
       />
+
+
+
+
     </Routes>
   )
 }
