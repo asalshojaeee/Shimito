@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
-
+import { useNavigate } from "react-router-dom";
 interface PayCompleteSampleModalProps {
     title?: string;
     description?: string;
@@ -10,6 +10,7 @@ interface PayCompleteSampleModalProps {
 }
 
 const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
+
     title = "شرایط خرید نمونه محصول",
 
     description = `لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی موردنیاز است، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد از گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری برای طراحان رایانه ای علی الخصوص طراحان`,
@@ -19,12 +20,13 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
     onContinue,
 }) => {
     const [agreed, setAgreed] = useState(false);
-
+    const navigate = useNavigate();
     if (!isOpen) return null;
 
     return createPortal(
+
         <div
-            className="fixed  inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4"
+            className="fixed  inset-0 z-[9999] flex items-center justify-center bg-[#A855F71A] backdrop-blur-sm px-4"
         >
             <div
                 className="border border-[#A855F7]"
@@ -38,14 +40,13 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
                     borderRadius: 40,
                     overflow: "hidden",
                     background:
-                        "linear-gradient(160dfeg, #3a0a5c 0%, #2a0845 55%, #200735 100%)",
+                        "#A855F71A",
                     color: "#fff",
                     boxShadow:
                         "0 20px 60px rgba(20, 0, 40, 0.5)",
                 }}
             >
 
-                {/* Header */}
                 <div
                     className="h-30 bg-[#A855F71A] relative"
                     style={{
@@ -55,7 +56,6 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
                         padding: "20px",
                     }}
                 >
-                    {/* دکمه بستن */}
                     <button
                         onClick={onClose}
                         aria-label="بستن"
@@ -85,7 +85,6 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
                         </svg>
                     </button>
 
-                    {/* عنوان دقیقاً وسط Header */}
                     <div
                         style={{
                             position: "absolute",
@@ -128,7 +127,6 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
                     </div>
                 </div>
 
-                {/* Body */}
                 <div
                     style={{
                         padding: "0 24px 24px 24px",
@@ -147,7 +145,6 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
                         {description}
                     </p>
 
-                    {/* Checkbox */}
                     <label
                         style={{
                             display: "flex",
@@ -208,7 +205,8 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
                     </label>
 
                     <button
-                        onClick={onContinue}
+                        onClick={() => navigate("/continue-payment")
+                        }
                         disabled={!agreed}
                         style={{
                             width: "100%",
@@ -235,7 +233,7 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
 
                 </div>
             </div>
-        </div>,
+        </div >,
         document.body
     );
 };
