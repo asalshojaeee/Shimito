@@ -15,6 +15,9 @@ const Commitees = lazy(() => import('./pages/Committees'))
 const Register = lazy(() => import('./pages/Register'))
 const Profile = lazy(() => import('./pages/Profile'))
 const CommitteeMembers = lazy(() => import('./pages/CommitteeMembers'))
+
+
+
 export default function App() {
   return (
     <Routes>

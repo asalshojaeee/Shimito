@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Download, FileText } from "lucide-react";
+
+
+import PayCompleteSampleModal from "./PayCompleteSampleModal";
 
 interface ProductTag {
   id: string;
@@ -67,6 +70,8 @@ const InfoRow: React.FC<{ label: string; value: React.ReactNode }> = ({
   </div>
 );
 
+
+
 const GalleryThumb: React.FC<{ label: string; imageUrl?: string }> = ({
   label,
   imageUrl,
@@ -80,7 +85,15 @@ const GalleryThumb: React.FC<{ label: string; imageUrl?: string }> = ({
   </div>
 );
 
-const ProductSidebar: React.FC<{ product: ProductData }> = ({ product }) => (
+interface ProductSidebarProps {
+  product: ProductData;
+  onOpenSampleModal: () => void;
+}
+
+const ProductSidebar: React.FC<ProductSidebarProps> = ({
+  product,
+  onOpenSampleModal,
+}) => (
   <aside className="w-full lg:w-80 flex flex-col items-center lg:items-start gap-4 shrink-0  ">
     <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-purple-400/60 shadow-[0_0_30px_rgba(168,85,247,0.35)]">
       <img
@@ -131,27 +144,36 @@ const ProductSidebar: React.FC<{ product: ProductData }> = ({ product }) => (
           خرید کامل
         </button>
         <button
+
+
+          onClick={onOpenSampleModal}
+
+
+
+
           className="
-    flex-1 py-2.5 rounded-xl
-    bg-[#FF00E533]
-    text-white text-sm font-medium
-    hover:bg-gradient-to-t
-    hover:from-[#FF00E533]
-    hover:to-[#99008ACC]
-    transition-all
-    hover:border border-[#EF2CC5]
-    hover:shadow-[0_14px_1p4x_0_#7F0A7B63]
-  "
+        flex-1 py-2.5 rounded-xl
+        bg-[#FF00E533]
+        text-white text-sm font-medium
+        hover:bg-gradient-to-t
+        hover:from-[#FF00E533]
+        hover:to-[#99008ACC]
+        transition-all
+        hover:border border-[#EF2CC5]
+        hover:shadow-[0_14px_1p4x_0_#7F0A7B63]
+        "
         >
           خرید نمونه
         </button>
 
       </div>
     </div>
-  </aside>
+  </aside >
 );
 
 const ProductDetails: React.FC = () => {
+  const [isSampleModalOpen, setIsSampleModalOpen] = useState(false);
+
   return (
     <div
       dir="rtl"
@@ -163,7 +185,15 @@ const ProductDetails: React.FC = () => {
         <main className=" rounded-3xl bg-[#FFFFFF00] backdrop-blur-md border border-white/10 p-8">
           <div className="flex flex-col lg:flex-row gap-8 ">
 
-            <ProductSidebar product={PRODUCT} />
+            <ProductSidebar
+
+
+
+              product={PRODUCT}
+              onOpenSampleModal={() => setIsSampleModalOpen(true)}
+
+
+            />
 
             <div className="bg-[#FFFFFF0A] p-5 rounded-3xl flex-1 flex flex-col gap-6">
               <div className="">
@@ -190,7 +220,12 @@ const ProductDetails: React.FC = () => {
           </div>
         </main>
       </div>
+      <PayCompleteSampleModal
+        isOpen={isSampleModalOpen}
+        onClose={() => setIsSampleModalOpen(false)}
+      />
     </div>
+
   );
 };
 
