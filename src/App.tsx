@@ -6,6 +6,7 @@ import Loader from './components/Loader'
 import ProtectedRoute from './components/ProtectedRoute'
 import ProductShowcasePage from './components/ProductShowCase'
 import ProductDetails from './components/ProductDetails'
+import CountiueOfPayment from './components/CountiueOfPayment'
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const MemberPage = lazy(() => import('./pages/MemeberPage'))
@@ -67,6 +68,14 @@ export default function App() {
           element={
             <Suspense fallback={<Loader />}>
               <ProductDetails />
+            </Suspense>
+          }
+        />
+                <Route
+          path='/continue-payment'
+          element={
+            <Suspense fallback={<Loader />}>
+              <CountiueOfPayment />
             </Suspense>
           }
         />
