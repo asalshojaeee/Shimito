@@ -20,7 +20,7 @@ const linkColumns: FooterLinkColumn[] = [
   },
 ];
 
-export default function Footer(): JSX.Element {
+export default function Footer() {
   const [email, setEmail] = useState("");
 
   const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {

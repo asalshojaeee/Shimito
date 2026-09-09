@@ -6,7 +6,7 @@ interface PayCompleteSampleModalProps {
     description?: string;
     isOpen: boolean;
     onClose: () => void;
-    onContinue?: () => void;
+    // onContinue?: () => void;
 }
 
 const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
@@ -17,7 +17,7 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
 
     isOpen,
     onClose,
-    onContinue,
+    // onContinue,
 }) => {
     const [agreed, setAgreed] = useState(false);
     const navigate = useNavigate();

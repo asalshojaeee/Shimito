@@ -7,6 +7,10 @@ import ProtectedRoute from './components/ProtectedRoute'
 import ProductShowcasePage from './components/ProductShowCase'
 import ProductDetails from './components/ProductDetails'
 import CountiueOfPayment from './components/CountiueOfPayment'
+import ProfileEditor from './pages/ProfileEditor'
+import AddProduct from './pages/AddProduct'
+import MyAcount from './pages/MyAcount'
+import MyProduct from './pages/MyProduct'
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const MemberPage = lazy(() => import('./pages/MemeberPage'))
@@ -71,7 +75,7 @@ export default function App() {
             </Suspense>
           }
         />
-                <Route
+        <Route
           path='/continue-payment'
           element={
             <Suspense fallback={<Loader />}>
@@ -143,6 +147,29 @@ export default function App() {
       />
 
 
+      <Route
+        path="/profileeditor"
+        element={
+
+          <Suspense fallback={<Loader />}>
+            <ProfileEditor />
+          </Suspense>
+
+        }
+      >
+        <Route
+          path="account"
+          element={<MyAcount />}
+        />
+        <Route
+          path="addproduct"
+          element={<AddProduct />}
+        />
+            <Route
+          path="myproduct"
+          element={<MyProduct />}
+        />
+      </Route>
 
 
     </Routes>

@@ -21,8 +21,7 @@ const Navbar: React.FC = () => {
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
-  // =========================
-  // Supabase Auth  // =========================
+ 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       setUser(data.user);
@@ -88,7 +87,7 @@ const Navbar: React.FC = () => {
   
       <div className="flex h-full w-full items-center justify-between">
 
-        {/* Logo */}
+      
         <img
           src="/logo-nav.png"
           alt="لوگو"
@@ -175,7 +174,7 @@ const Navbar: React.FC = () => {
             <span className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-t-transparent border-blue-600" />
           ) : user ? (
             <>
-              {/* Avatar */}
+        
               <button
                 onClick={() =>
                   setOpenUserMenu((prev) => !prev)
@@ -361,7 +360,7 @@ const Navbar: React.FC = () => {
             گزینه ها
           </NavLink>
 
-          {/* Mobile User */}
+          
           <div
             ref={userMenuRef}
             className="relative"

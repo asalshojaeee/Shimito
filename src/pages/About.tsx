@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
-import { Image as ImageIcon, FileText, X, Facebook } from "lucide-react";
+import { FileText, X, Facebook } from "lucide-react";
+import { Link } from "react-router";
 
 interface FormData {
   lastName: string;
@@ -85,11 +86,11 @@ export default function CompanySignupForm() {
         fontFamily: "'Vazirmatn', 'Tahoma', sans-serif",
       }}
     >
-      <div className="w-full max-w-6xl mt-8 md:mt-10">
-        <div className="relative w-full rounded-3xl border border-white/10 bg-gradient-to-br from-[#2a1157]/70 via-[#1c0f3a]/70 to-[#0d0818]/80 backdrop-blur-2xl shadow-[0_0_80px_rgba(139,92,246,0.2)] overflow-hidden">
+      <div className="w-full max-w-6xl mt-8 md:mt-10 bg-[#FFFFFF00] ">
+        <div className="relative w-full rounded-3xl bg-gradient-to-br from-[#2a1157]/70  to-[#0d0818]/80 backdrop-blur-2xl shadow-[0_0_80px_rgba(139,92,246,0.2)] overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-[320px_1fr]">
 
-            <div className="relative flex flex-col items-center justify-center gap-6 px-10 py-12 border-l border-white/10 bg-white/5 order-1 md:order-none">
+            <div className="relative flex flex-col items-center justify-center gap-6 px-10 py-12  order-1 md:order-none">
               <img src="register-company-logo.png" />
 
               <div className="text-center space-y-4">
@@ -103,20 +104,20 @@ export default function CompanySignupForm() {
                 </p>
               </div>
 
-              <a
-                href="#"
+              <Link
+                to="/profileeditor"
                 className="mt-auto flex items-center gap-2 text-fuchsia-400 text-sm underline"
               >
                 <UserIcon />
                 ثبت نام افراد
-              </a>
+              </Link>
             </div>
 
             <form
               onSubmit={handleSubmit}
-              className="p-8 md:p-12 text-white space-y-8 order-2 md:order-none"
+              className="p-8 md:p-12 text-white space-y-8 order-2 md:order-none bg-[#FFFFFF0A] rounded-3xl"
             >
-              <div className="grid md:grid-cols-2 gap-x-10 gap-y-8">
+              <div className="grid md:grid-cols-2 gap-x-10 gap-y-8 ">
                 <Field
                   label="نام و نام خانوادگی"
                   value={form.lastName}
@@ -335,28 +336,28 @@ function UploadRow({
   );
 }
 
-function Logo({ large = false }: { large?: boolean }) {
-  const size = large ? "gap-1.5" : "gap-1";
-  const dot = large ? "w-4 h-9" : "w-3 h-7";
+// function Logo({ large = false }: { large?: boolean }) {
+//   const size = large ? "gap-1.5" : "gap-1";
+//   const dot = large ? "w-4 h-9" : "w-3 h-7";
 
-  return (
-    <div className="flex flex-col items-center">
-      <div className={`flex items-end ${size}`}>
-        <span className={`${dot} rounded-full bg-white`} />
-        <span className={`${dot} rounded-full bg-white`} />
-        <span
-          className={`${large ? "w-4 h-4" : "w-3 h-3"} rounded-full bg-fuchsia-300 self-end`}
-        />
-      </div>
+//   return (
+//     <div className="flex flex-col items-center">
+//       <div className={`flex items-end ${size}`}>
+//         <span className={`${dot} rounded-full bg-white`} />
+//         <span className={`${dot} rounded-full bg-white`} />
+//         <span
+//           className={`${large ? "w-4 h-4" : "w-3 h-3"} rounded-full bg-fuchsia-300 self-end`}
+//         />
+//       </div>
 
-      {large && (
-        <span className="mt-3 text-2xl font-bold text-white tracking-wide">
-          Co Name
-        </span>
-      )}
-    </div>
-  );
-}
+//       {large && (
+//         <span className="mt-3 text-2xl font-bold text-white tracking-wide">
+//           Co Name
+//         </span>
+//       )}
+//     </div>
+//   );
+// }
 
 function GoogleIcon() {
   return (

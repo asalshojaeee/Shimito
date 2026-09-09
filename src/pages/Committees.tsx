@@ -64,7 +64,7 @@ const CommitteeCard = ({
 }) => (
   <div
     onClick={onClick}
-    className='flex flex-col items-center justify-center w-40 md:w-52 min-h-[150px] md:min-h-[180px] bg-[#345C5D]/70 rounded-[46px] shadow-lg cursor-pointer p-4'
+    className='flex flex-col items-center justify-center w-40 md:w-52 min-h-[150px] md:min-h-[180px] bg-white/10 rounded-[46px] shadow-lg cursor-pointer p-4'
   >
     <img src={icon} alt={title} className='w-16 md:w-20 h-16 md:h-20 object-contain mb-2' />
     <div className='text-center text-white text-lg leading-tight whitespace-pre-line'>
@@ -76,9 +76,11 @@ const CommitteeCard = ({
 const Committees = (): JSX.Element => {
   const navigate = useNavigate()
   return (
-    <div className='mt-24 w-full min-h-screen flex flex-col gap-y-10 items-center py-16 max-w-[95vw] md:max-w-[85vw] mx-auto'>
-      {/* بخش عنوان و توضیح */}
-      <div className='bg-[#345C5D]/70 w-full flex flex-col items-center justify-center py-10 rounded-[46px] shadow-lg px-6'>
+        <div className='min-h-screen w-full bg-gradient-to-b from-[#000105] via-[#140024] to-[#2B0147]'>
+
+    <div className='pt-24 w-full min-h-screen flex flex-col gap-y-10 items-center py-16 max-w-[95vw] md:max-w-[85vw] mx-auto'>
+  
+      <div className='bg-[#2B0147]/70 w-full flex flex-col items-center justify-center py-10 rounded-[46px] shadow-lg px-6'>
         <img
           src='/committees.png'
           alt='کمیته‌ها'
@@ -115,6 +117,7 @@ const Committees = (): JSX.Element => {
           />
         ))}
       </div>
+    </div>
     </div>
   )
 }

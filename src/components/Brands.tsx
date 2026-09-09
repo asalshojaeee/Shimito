@@ -1,7 +1,7 @@
 // components/Brands.tsx
 import React, { useEffect, useState } from 'react'
 import SectionTitle from './SectionTitle'
-import api from '../api.js'
+// import api from '../api.js'
 import { Link } from 'react-router'
 import axios from 'axios'
 // import { supabase } from '../data/supabaseClient'

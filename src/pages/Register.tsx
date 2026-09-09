@@ -22,7 +22,7 @@ const Auth = () => {
         <img
           className='absolute top-0 left-0 w-full h-full object-cover'
           alt='background'
-          src='https://c.animaapp.com/mix2ox95W4Hhy8/img/daniel-leone-v7datklzzaw-unsplash-1.png'
+          src='image 3.png'
         />
 
         <section className='relative  w-full max-w-[420px] px-2 md:px-0 mx-auto'>

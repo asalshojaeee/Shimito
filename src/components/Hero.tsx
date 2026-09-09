@@ -1,5 +1,5 @@
 import React from 'react'
-import SliderinHero from './SliderinHero'
+// import SliderinHero from './SliderinHero'
 
 type StatProps = {
   number: string | number
@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
   return (
     <section className='relative min-h-[100vh] w-full overflow-hidden text-white flex justify-center items-center'>
 
-      {/* Background */}
+
       <div className='absolute inset-0'>
         <img
           src='/image 3.png'
@@ -41,10 +41,8 @@ const Hero: React.FC = () => {
       </div>
 
 
-      {/* ================= DESKTOP ================= */}
       <div className='relative hidden md:grid w-full max-w-[85vw] grid-cols-2 gap-5 lg:gap-24 mt-16'>
 
-        {/* ================= RIGHT : TEAM ================= */}
         <div className='col-start-2 row-start-1 flex items-center justify-center w-full'>
 
           <div className='w-full max-w-xl rounded-[50px] bg-[#EF2CC51A] p-6 md:p-10 backdrop-blur-xl shadow-[0_10px_60px_-15px_rgba(0,0,0,0.6)] flex flex-col items-center md:items-end gap-6 md:gap-8'>
@@ -82,10 +80,10 @@ const Hero: React.FC = () => {
         </div>
 
 
-        {/* ================= LEFT : SLIDER + STATS ================= */}
+
         <div className='col-start-1 row-start-1 flex flex-col items-center justify-center w-full'>
 
-          {/* <SliderinHero /> */}
+
 
           <div className='flex flex-col justify-center items-center gap-4 mt-8'>
 
@@ -121,16 +119,13 @@ const Hero: React.FC = () => {
       </div>
 
 
-      {/* ================= MOBILE ================= */}
+    
       <div className='relative flex md:hidden flex-col w-full max-w-[95vw] gap-8 mt-16 px-4'>
 
-        {/* Slider */}
-        {/* <div className='flex flex-col items-center justify-center w-full'>
-          <SliderinHero />
-        </div> */}
+  
 
 
-        {/* Team */}
+   
         <div className='flex items-center justify-center w-full'>
 
           <div className='w-full rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-xl shadow-[0_10px_60px_-15px_rgba(0,0,0,0.6)] flex flex-col items-center gap-6'>
@@ -160,7 +155,7 @@ const Hero: React.FC = () => {
             </p>
 
 
-            {/* Stats */}
+    
             <div className='flex flex-wrap justify-center gap-x-8 gap-y-6 text-white/90'>
 
               <Stat
@@ -181,7 +176,7 @@ const Hero: React.FC = () => {
             </div>
 
 
-            {/* Button */}
+           
             <div className='w-full'>
 
               <a
@@ -200,7 +195,7 @@ const Hero: React.FC = () => {
       </div>
 
 
-      {/* Bottom line */}
+
       <div className='pointer-events-none absolute inset-x-6 bottom-0 h-px bg-gradient-to-l from-transparent via-white/40 to-transparent md:inset-x-10' />
 
     </section>
