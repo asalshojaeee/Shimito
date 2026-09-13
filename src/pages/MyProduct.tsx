@@ -58,73 +58,134 @@ function ProductRow({
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
 }) {
-  return (
+
+return (
+  <div
+    dir="rtl"
+    className="
+      flex
+      w-full
+      flex-col
+      items-start
+      gap-4
+      rounded-2xl
+      px-4
+      py-4
+      sm:px-6
+      sm:py-5
+      lg:flex-row
+      lg:items-center
+      lg:rounded-[28px]
+    "
+  >
+    {/* تصویر */}
     <div
-      dir="rtl"
-      className="flex w-full items-center gap-4 rounded-[28px] px-6 py-5"
+      className="
+        h-20
+        w-20
+        shrink-0
+        overflow-hidden
+        rounded-2xl
+        bg-black/30
+        sm:h-24
+        sm:w-24
+      "
     >
-    
+      <img
+        src={product.imageUrl}
+        alt={product.name}
+        className="h-full w-full object-cover"
+      />
+    </div>
 
-      <div className="h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-black/30">
-        <img
-          src={product.imageUrl}
-          alt={product.name}
-          className="h-full w-full object-cover"
-        />
-      </div>
-
-     
-
-      <div className="flex min-w-[150px] shrink-0 flex-col items-start gap-2">
-        <span className="text-right text-lg font-semibold text-white">
-          {product.name}
-        </span>
-
-        <div className="flex flex-wrap justify-start gap-2">
-          {product.tags.map((tag, i) => (
-            <CategoryTag
-              key={`${tag}-${i}`}
-              text={tag}
-            />
-          ))}
-        </div>
-      </div>
-
-
-
-      <p
-        dir="rtl"
-        className="min-w-0 flex-1 text-right text-sm leading-7 text-white/85"
+    {/* نام و تگ‌ها */}
+    <div
+      className="
+        flex
+        min-w-0
+        w-full
+        flex-col
+        items-start
+        gap-2
+        lg:w-auto
+        lg:min-w-[150px]
+        lg:shrink-0
+      "
+    >
+      <span
+        className="
+          max-w-full
+          break-words
+          text-right
+          text-base
+          font-semibold
+          text-white
+          sm:text-lg
+        "
       >
-        {product.description}
-      </p>
+        {product.name}
+      </span>
 
-     
-
-      <div className="flex shrink-0 items-center gap-2">
-
-     <ActionButton
-          icon={<Trash2 size={18} />}
-          variant="delete"
-          label="حذف محصول"
-          onClick={() =>
-            onDelete?.(product.id)
-          }
-        />
-
-        <ActionButton
-          icon={<Pencil size={18} />}
-          variant="edit"
-          label="ویرایش محصول"
-          onClick={() =>
-            onEdit?.(product.id)
-          }
-        />
-
-   
+      <div className="flex max-w-full flex-wrap justify-start gap-2">
+        {product.tags.map((tag, i) => (
+          <CategoryTag
+            key={`${tag}-${i}`}
+            text={tag}
+          />
+        ))}
       </div>
     </div>
-  );
+
+    {/* توضیحات */}
+    <p
+      dir="rtl"
+      className="
+        min-w-0
+        w-full
+        text-right
+        text-sm
+        leading-7
+        text-white/85
+        lg:flex-1
+      "
+    >
+      {product.description}
+    </p>
+
+    {/* دکمه‌ها */}
+    <div
+      className="
+        flex
+        w-full
+        shrink-0
+        items-center
+        justify-start
+        gap-2
+        lg:w-auto
+      "
+    >
+      <ActionButton
+        icon={<Trash2 size={18} />}
+        variant="delete"
+        label="حذف محصول"
+        onClick={() =>
+          onDelete?.(product.id)
+        }
+      />
+
+      <ActionButton
+        icon={<Pencil size={18} />}
+        variant="edit"
+        label="ویرایش محصول"
+        onClick={() =>
+          onEdit?.(product.id)
+        }
+      />
+    </div>
+  </div>
+);
+
+
 }
 
 

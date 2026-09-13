@@ -20,19 +20,19 @@ const MoleculeCardSlider: React.FC<MoleculeCardSliderProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  const cardWidth = 280;
-  const overlap = 45;
+  // const cardWidth = 280;
+  // const overlap = 45;
 
-  // فاصله‌ای که هر بار اسلاید حرکت می‌کند
-  const slideWidth = cardWidth - overlap;
+  
+  // const slideWidth = cardWidth - overlap;
 
   useEffect(() => {
-    // اگر یک کارت یا هیچ کارتی نداریم، اسلاید نکن
+
     if (items.length <= 1 || paused) return;
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => {
-        // وقتی به آخر رسیدیم، دوباره از اول شروع کن
+      
         if (prev >= items.length - 1) {
           return 0;
         }
@@ -45,38 +45,42 @@ const MoleculeCardSlider: React.FC<MoleculeCardSliderProps> = ({
   }, [items.length, interval, paused]);
 
 return (
-  <section
-    dir="rtl"
+<section
+  dir="rtl"
+  className="
+    relative
+    w-full
+    py-16
+  "
+  onMouseEnter={() => setPaused(true)}
+  onMouseLeave={() => setPaused(false)}
+>
+  <div
     className="
-      relative
+      pointer-events-none
+      absolute
+      left-1/2
+      top-1/2
+      -translate-x-1/2
+      -translate-y-1/2
       w-full
-      py-16
+      h-[300px]
+      rounded-full
+      blur-[120px]
     "
-    onMouseEnter={() => setPaused(true)}
-    onMouseLeave={() => setPaused(false)}
-  >
-    {/* نور پشت کارت‌ها */}
-    <div
-      className="
-        pointer-events-none
-        absolute
-        left-1/2
-        top-1/2
-        -translate-x-1/2
-        -translate-y-1/2
-        w-full
-        h-[300px]
-        rounded-full
-        blur-[120px]
-      "
-    />
+  />
 
-    {/* ردیف کارت‌ها */}
+
+<div className="relative hidden md:block w-full">
+
     <div
       className="
         relative
+        mx-auto
         w-full
+        max-w-[1200px]
         min-h-[450px]
+
         flex
         items-center
         justify-center
@@ -90,10 +94,7 @@ return (
           <Link
             key={item.id}
             to="/our-products"
-            className="
-              absolute
-              shrink-0
-            "
+            className="absolute shrink-0"
             style={{
               zIndex: items.length - position,
 
@@ -116,14 +117,12 @@ return (
               className="
                 group
                 relative
-
                 w-[280px]
                 min-h-[390px]
 
                 rounded-[24px]
 
                 backdrop-blur-xl
-
                 p-5
 
                 flex
@@ -137,7 +136,6 @@ return (
                 hover:-translate-y-2
               "
             >
-              {/* تصویر */}
               <div
                 className="
                   relative
@@ -149,7 +147,6 @@ return (
                   justify-center
 
                   rounded-[20px]
-
                   overflow-hidden
                 "
               >
@@ -157,14 +154,10 @@ return (
                   className="
                     pointer-events-none
                     absolute
-
                     w-[160px]
                     h-[160px]
-
                     rounded-full
-
                     bg-[#FFFFFF1A]
-
                     blur-[50px]
                   "
                 />
@@ -175,10 +168,8 @@ return (
                   className="
                     relative
                     z-10
-
                     max-w-[90%]
                     max-h-[90%]
-
                     object-contain
 
                     transition-transform
@@ -189,7 +180,6 @@ return (
                 />
               </div>
 
-              {/* عنوان */}
               <h3
                 className="
                   mt-5
@@ -202,7 +192,6 @@ return (
                 {item.name}
               </h3>
 
-              {/* خط */}
               <div
                 className="
                   mt-3
@@ -213,7 +202,6 @@ return (
                 "
               />
 
-              {/* توضیحات */}
               <p
                 className="
                   text-[13px]
@@ -229,7 +217,8 @@ return (
         );
       })}
     </div>
-  </section>
+  </div>
+</section>
 );
 };
 

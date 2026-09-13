@@ -94,119 +94,365 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   product,
   onOpenSampleModal,
 }) => (
-  <aside className="w-full lg:w-80 flex flex-col items-center lg:items-start gap-4 shrink-0  ">
-    <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-purple-400/60 shadow-[0_0_30px_rgba(168,85,247,0.35)]">
+  <aside
+    className="
+      flex
+      w-full
+      shrink-0
+      flex-col
+      items-center
+      gap-4
+      lg:w-80
+      lg:items-start
+    "
+  >
+    {/* Product Image */}
+    <div
+      className="
+        h-28
+        w-28
+        overflow-hidden
+        rounded-2xl
+        border-2
+        border-purple-400/60
+        shadow-[0_0_30px_rgba(168,85,247,0.35)]
+        sm:h-32
+        sm:w-32
+      "
+    >
       <img
         src={product.avatarUrl}
         alt={product.name}
-        className="w-full h-full object-cover"
+        className="h-full w-full object-cover"
       />
     </div>
 
-    <h2 className="text-2xl font-bold text-white">{product.name}</h2>
+    {/* Product Name */}
+    <h2
+      className="
+        text-center
+        text-xl
+        font-bold
+        text-white
+        sm:text-2xl
+        lg:text-right
+      "
+    >
+      {product.name}
+    </h2>
 
-    <div className="w-full flex flex-col gap-3">
-      <div className="flex items-center justify-between">
+    {/* Information */}
+    <div className="flex w-full flex-col gap-3">
 
-        <span className="text-white text-sm shrink-0">دسته‌بندی</span>
+      {/* Category */}
+      <div
+        className="
+          flex
+          flex-col
+          gap-2
+          rounded-xl
+          bg-white/[0.03]
+          p-3
+          sm:flex-row
+          sm:items-center
+          sm:justify-between
+          sm:bg-transparent
+          sm:p-0
+        "
+      >
+        <span className="shrink-0 text-sm text-white">
+          دسته‌بندی
+        </span>
 
-        <div className="flex gap-2 flex-wrap justify-end">
+        <div
+          className="
+            flex
+            flex-wrap
+            justify-start
+            gap-2
+            sm:justify-end
+          "
+        >
           {product.tags.map((tag) => (
-            <Tag key={tag.id} label={tag.label} />
+            <Tag
+              key={tag.id}
+              label={tag.label}
+            />
           ))}
         </div>
       </div>
 
-      <InfoRow label="درصد خلوص" value={`${product.purityPercent} درصد`} />
-      <InfoRow label="کشور سازنده" value={product.manufacturerCountry} />
+      {/* Purity */}
+      <InfoRow
+        label="درصد خلوص"
+        value={`${product.purityPercent} درصد`}
+      />
 
-      <div className="flex items-center justify-between rounded-xl bg-[#4A007499] px-4 py-3">
-        <span className="text-white text-sm">قیمت کالا</span>
+      {/* Manufacturer */}
+      <InfoRow
+        label="کشور سازنده"
+        value={product.manufacturerCountry}
+      />
 
-        <span className="text-white font-semibold">
+      {/* Price */}
+      <div
+        className="
+          flex
+          min-h-12
+          w-full
+          items-center
+          justify-between
+          gap-3
+          rounded-xl
+          bg-[#4A007499]
+          px-3
+          py-3
+          sm:px-4
+        "
+      >
+        <span className="shrink-0 text-xs text-white sm:text-sm">
+          قیمت کالا
+        </span>
+
+        <span
+          className="
+            text-left
+            text-xs
+            font-semibold
+            text-white
+            sm:text-sm
+          "
+        >
           {formatToman(product.price)} تومان
         </span>
       </div>
 
-      <button className="flex items-center justify-between rounded-xl bg-[#4A007499]  px-4 py-3 ">
+      {/* Download */}
+      <button
+        type="button"
+        className="
+          flex
+          min-h-12
+          w-full
+          items-center
+          justify-between
+          gap-2
+          rounded-xl
+          bg-[#4A007499]
+          px-3
+          py-3
+          transition-all
+          hover:bg-[#5A008F99]
+          sm:px-4
+        "
+      >
+        <FileText className="h-4 w-4 shrink-0 text-white" />
 
-        <FileText className="w-4 h-4 text-white" />
+        <span
+          className="
+            flex-1
+            text-center
+            text-xs
+            text-white
+            sm:text-sm
+          "
+        >
+          دانلود جدول شیمیایی
+        </span>
 
-        <span className="text-white text-sm">دانلود جدول شیمیایی</span>
-
-        <Download className="w-4 h-4 text-white" />
-
-
+        <Download className="h-4 w-4 shrink-0 text-white" />
       </button>
 
-      <div className="flex gap-3 pt-1">
-        <button className="flex-1 py-2.5 rounded-xl bg-[#FF00E533] border border-white/10 text-white text-sm font-medium ">
+      {/* Buttons */}
+      <div
+        className="
+          flex
+          w-full
+          flex-col
+          gap-3
+          pt-1
+          sm:flex-row
+        "
+      >
+        <button
+          type="button"
+          className="
+            w-full
+            rounded-xl
+            border
+            border-white/10
+            bg-[#FF00E533]
+            py-3
+            text-sm
+            font-medium
+            text-white
+            transition-all
+            hover:border-[#EF2CC5]
+            hover:bg-gradient-to-t
+            hover:from-[#FF00E533]
+            hover:to-[#99008ACC]
+            sm:flex-1
+          "
+        >
           خرید کامل
         </button>
+
         <button
-
-
+          type="button"
           onClick={onOpenSampleModal}
-
-
-
-
           className="
-        flex-1 py-2.5 rounded-xl
-        bg-[#FF00E533]
-        text-white text-sm font-medium
-        hover:bg-gradient-to-t
-        hover:from-[#FF00E533]
-        hover:to-[#99008ACC]
-        transition-all
-        hover:border border-[#EF2CC5]
-        hover:shadow-[0_14px_1p4x_0_#7F0A7B63]
-        "
+            w-full
+            rounded-xl
+            border
+            border-white/10
+            bg-[#FF00E533]
+            py-3
+            text-sm
+            font-medium
+            text-white
+            transition-all
+            hover:border-[#EF2CC5]
+            hover:bg-gradient-to-t
+            hover:from-[#FF00E533]
+            hover:to-[#99008ACC]
+            hover:shadow-[0_14px_14px_0_#7F0A7B63]
+            sm:flex-1
+          "
         >
           خرید نمونه
         </button>
-
       </div>
     </div>
-  </aside >
+  </aside>
 );
 
+
 const ProductDetails: React.FC = () => {
-  const [isSampleModalOpen, setIsSampleModalOpen] = useState(false);
+  const [isSampleModalOpen, setIsSampleModalOpen] =
+    useState(false);
 
   return (
     <div
       dir="rtl"
-      className="min-h-screen w-full bg-gradient-to-br from-[#02000A] via-[#140024] to-[#0B1521] pt-24 px-4 md:px-8 font-sans"
-      style={{ fontFamily: "'Vazirmatn', 'Tahoma', sans-serif" }}
+      className="
+        min-h-screen
+        w-full
+        bg-gradient-to-br
+        from-[#02000A]
+        via-[#140024]
+        to-[#0B1521]
+        px-3
+        pb-12
+        pt-24
+        font-sans
+        sm:px-5
+        sm:pt-28
+        lg:px-8
+      "
+      style={{
+        fontFamily: "'Vazirmatn', 'Tahoma', sans-serif",
+      }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto w-full max-w-6xl">
 
-        <main className=" rounded-3xl bg-[#FFFFFF00] backdrop-blur-md border border-white/10 p-8">
-          <div className="flex flex-col lg:flex-row gap-8 ">
+        <main
+          className="
+            w-full
+            rounded-2xl
+            border
+            border-white/10
+            bg-[#FFFFFF00]
+            p-3
+            backdrop-blur-md
+            sm:rounded-3xl
+            sm:p-5
+            lg:p-8
+          "
+        >
 
+          {/* Main Layout */}
+          <div
+            className="
+              flex
+              w-full
+              flex-col
+              gap-5
+              lg:flex-row
+              lg:gap-8
+            "
+          >
+
+            {/* Sidebar */}
             <ProductSidebar
-
-
-
               product={PRODUCT}
-              onOpenSampleModal={() => setIsSampleModalOpen(true)}
-
-
+              onOpenSampleModal={() =>
+                setIsSampleModalOpen(true)
+              }
             />
 
-            <div className="bg-[#FFFFFF0A] p-5 rounded-3xl flex-1 flex flex-col gap-6">
-              <div className="">
-                <h3 className="text-white font-bold text-lg mb-4">
+            {/* Description + Gallery */}
+            <div
+              className="
+                flex
+                min-w-0
+                w-full
+                flex-1
+                flex-col
+                gap-5
+                rounded-2xl
+                bg-[#FFFFFF0A]
+                p-4
+                sm:rounded-3xl
+                sm:p-5
+                lg:gap-6
+              "
+            >
+
+              {/* Description */}
+              <div className="w-full">
+                <h3
+                  className="
+                    mb-3
+                    text-base
+                    font-bold
+                    text-white
+                    sm:mb-4
+                    sm:text-lg
+                  "
+                >
                   درباره محصول
                 </h3>
 
-                <p className="text-white/70 leading-8 text-justify">
+                <p
+                  className="
+                    text-justify
+                    text-sm
+                    leading-7
+                    text-white/70
+                    sm:text-base
+                    sm:leading-8
+                  "
+                >
                   {PRODUCT.description}
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-auto pt-10">
+              {/* Gallery */}
+              <div
+                className="
+                  grid
+                  w-full
+                  grid-cols-2
+                  gap-3
+                  pt-3
+                  sm:grid-cols-3
+                  sm:gap-4
+                  sm:pt-6
+                  md:grid-cols-4
+                  lg:grid-cols-5
+                  lg:pt-10
+                "
+              >
                 {PRODUCT.gallery.map((item) => (
                   <GalleryThumb
                     key={item.id}
@@ -215,17 +461,20 @@ const ProductDetails: React.FC = () => {
                   />
                 ))}
               </div>
-            </div>
 
+            </div>
           </div>
         </main>
       </div>
+
+      {/* Modal */}
       <PayCompleteSampleModal
         isOpen={isSampleModalOpen}
-        onClose={() => setIsSampleModalOpen(false)}
+        onClose={() =>
+          setIsSampleModalOpen(false)
+        }
       />
     </div>
-
   );
 };
 

@@ -324,229 +324,311 @@ export default function ExpertProfileForm() {
   //         .split(/\s+/).length
   //     : 0;
 
-  return (
+return (
+  <div
+    dir="rtl"
+    className="
+      mx-auto
+      w-full
+      max-w-3xl
+      px-3
+      py-6
+      sm:px-5
+      sm:py-8
+    "
+  >
+    {/* Fields */}
     <div
-      dir="rtl"
-      className="mx-auto w-full max-w-3xl p-8"
+      className="
+        grid
+        grid-cols-1
+        gap-x-6
+        gap-y-5
+        sm:grid-cols-2
+        sm:gap-x-8
+        sm:gap-y-6
+        lg:gap-x-10
+      "
     >
-   
+      <VerifiableField
+        label="نام و نام خانوادگی"
+        value={data.fullName}
+        onChange={(v) =>
+          setField("fullName", v)
+        }
+        verified={data.fullNameVerified}
+        onToggleVerified={() =>
+          setData((d) => ({
+            ...d,
+            fullNameVerified:
+              !d.fullNameVerified,
+          }))
+        }
+      />
 
-      <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2">
+      <EditableField
+        label="شماره تماس نماینده / مدیرعامل"
+        value={data.repPhone}
+        onChange={(v) =>
+          setField("repPhone", v)
+        }
+      />
 
+      <EditableField
+        label="شماره ملی"
+        value={data.nationalId}
+        onChange={(v) =>
+          setField("nationalId", v)
+        }
+      />
 
-        <VerifiableField
-          label="نام و نام خانوادگی"
-          value={data.fullName}
-          onChange={(v) =>
-            setField(
-              "fullName",
-              v
-            )
-          }
-          verified={
-            data.fullNameVerified
-          }
-          onToggleVerified={() =>
+      <EditableField
+        label="آدرس"
+        value={data.address}
+        onChange={(v) =>
+          setField("address", v)
+        }
+      />
+
+      {/* Specialty */}
+      <div
+        dir="rtl"
+        className="
+          flex
+          min-w-0
+          flex-col
+          items-end
+          gap-3
+          border-b
+          border-white/10
+          pb-4
+        "
+      >
+        <select
+          name="specialty"
+          dir="rtl"
+          className="
+            w-full
+            min-w-0
+            bg-transparent
+            text-right
+            text-sm
+            text-white
+            outline-none
+          "
+        >
+          <option
+            value=""
+            className="text-black"
+          >
+            *حوزه تخصصی
+          </option>
+
+          <option
+            value="کربن"
+            className="text-black"
+          >
+            کربن
+          </option>
+
+          <option
+            value="اسید"
+            className="text-black"
+          >
+            اسید
+          </option>
+
+          <option
+            value="سولفات"
+            className="text-black"
+          >
+            سولفات
+          </option>
+        </select>
+      </div>
+
+      {/* Uploads */}
+      <div
+        dir="rtl"
+        className="
+          flex
+          min-w-0
+          flex-col
+          gap-4
+          sm:gap-6
+        "
+      >
+        <UploadTile
+          icon={<ImagePlus size={24} />}
+          label="عکس کاربری خود را با پسوند jpg آپلود کنید"
+          accept="image/jpeg"
+          file={data.photo}
+          onFile={(f) =>
             setData((d) => ({
               ...d,
-              fullNameVerified:
-                !d.fullNameVerified,
+              photo: f,
             }))
           }
         />
 
-
-
-        <EditableField
-          label="شماره تماس نماینده / مدیرعامل"
-          value={data.repPhone}
-          onChange={(v) =>
-            setField(
-              "repPhone",
-              v
-            )
+        <UploadTile
+          label="فایل رزومه خود را با پسوند pdf آپلود کنید"
+          icon={<FileText size={24} />}
+          accept="application/pdf"
+          file={data.resume}
+          onFile={(f) =>
+            setData((d) => ({
+              ...d,
+              resume: f,
+            }))
           }
         />
-
-   
-
-        <EditableField
-          label="شماره ملی"
-          value={data.nationalId}
-          onChange={(v) =>
-            setField(
-              "nationalId",
-              v
-            )
-          }
-        />
-
-
-        <EditableField
-          label="آدرس"
-          value={data.address}
-          onChange={(v) =>
-            setField(
-              "address",
-              v
-            )
-          }
-        />
-
-
-        <div
-          dir="rtl"
-          className="flex flex-col items-end gap-3  pb-4"
-        >
-          <select
-            name="specialty"
-            dir="rtl"
-            className="w-full bg-transparent text-right text-white outline-none"
-          >
-            <option
-              value=""
-              className="text-black"
-            >
-              *حوزه تخصصی
-            </option>
-
-            <option
-              value="کربن"
-              className="text-black"
-            >
-              کربن
-            </option>
-
-            <option
-              value="اسید"
-              className="text-black"
-            >
-              اسید
-            </option>
-
-            <option
-              value="سولفات"
-              className="text-black"
-            >
-              سولفات
-            </option>
-          </select>
-
-    
-        </div>
-
-
-        <div
-          dir="rtl"
-          className="flex flex-col gap-6 "
-        >
-          <UploadTile
-
-
-
-            icon={
-              <ImagePlus size={24} />
-            }
-            label="عکس کاربری خود را با پسوند jpg آپلود کنید"
-
-
-
-            accept="image/jpeg"
-            file={data.photo}
-            onFile={(f) =>
-              setData((d) => ({
-                ...d,
-                photo: f,
-              }))
-            }
-          />
-
-          <UploadTile
-            label="فایل رزومه خود را با پسوند pdf آپلود کنید"
-            icon={
-              <FileText size={24} />
-            }
-            accept="application/pdf"
-            file={data.resume}
-            onFile={(f) =>
-              setData((d) => ({
-                ...d,
-                resume: f,
-              }))
-            }
-          />
-        </div>
       </div>
+    </div>
 
-
+    {/* Description */}
+    <div
+      dir="rtl"
+      className="
+        mt-6
+        w-full
+        rounded-2xl
+        border
+        border-white/20
+        p-3
+        sm:mt-8
+        sm:rounded-3xl
+        sm:p-5
+      "
+    >
+      {/* Description Header */}
       <div
-        dir="rtl"
-        className="mt-8 rounded-3xl border border-white/20 p-5"
+        className="
+          mb-3
+          flex
+          w-full
+          flex-col
+          gap-3
+          sm:flex-row
+          sm:items-center
+          sm:justify-between
+        "
       >
-        <div className="mb-3 flex items-center justify-between">
-
-
-
-          <div className="flex items-center gap-2">
-            <span className="text-right text-sm text-white/80">
-              *
-              <span className="mr-1 text-white">
-                توضیحات
-              </span>
-
-              <span className="mr-1 text-white/40">
-                (۱۰۰ کلمه تا ۱۰۰۰ کلمه)
-              </span>
+        <div
+          className="
+            flex
+            min-w-0
+            flex-wrap
+            items-center
+            gap-2
+          "
+        >
+          <span
+            className="
+              min-w-0
+              text-right
+              text-xs
+              leading-6
+              text-white/80
+              sm:text-sm
+            "
+          >
+            *
+            <span className="mr-1 text-white">
+              توضیحات
             </span>
 
-            <button
-              type="button"
-              onClick={() =>
-                setData((d) => ({
-                  ...d,
-                  descriptionVerified:
-                    !d.descriptionVerified,
-                }))
-              }
-              className={`flex h-9 w-9 items-center justify-center rounded-xl transition ${
+            <span className="mr-1 text-white/40">
+              (۱۰۰ کلمه تا ۱۰۰۰ کلمه)
+            </span>
+          </span>
+
+          {/* Verify */}
+          <button
+            type="button"
+            onClick={() =>
+              setData((d) => ({
+                ...d,
+                descriptionVerified:
+                  !d.descriptionVerified,
+              }))
+            }
+            className={`
+              flex
+              h-8
+              w-8
+              shrink-0
+              items-center
+              justify-center
+              rounded-xl
+              transition
+              sm:h-9
+              sm:w-9
+              ${
                 data.descriptionVerified
                   ? "bg-white/25 text-white"
                   : "bg-white/10 text-white/50 hover:bg-white/15"
-              }`}
-              aria-label="تایید توضیحات"
-            >
-              <Check
-                size={16}
-                strokeWidth={2.5}
-              />
-            </button>
+              }
+            `}
+            aria-label="تایید توضیحات"
+          >
+            <Check
+              size={16}
+              strokeWidth={2.5}
+            />
+          </button>
 
-            <button
-              type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-indigo-600 transition hover:bg-white/90"
-              aria-label="ویرایش توضیحات"
-            >
-              <Pencil size={16} />
-            </button>
-          </div>
+          {/* Edit */}
+          <button
+            type="button"
+            className="
+              flex
+              h-8
+              w-8
+              shrink-0
+              items-center
+              justify-center
+              rounded-xl
+              bg-white
+              text-indigo-600
+              transition
+              hover:bg-white/90
+              sm:h-9
+              sm:w-9
+            "
+            aria-label="ویرایش توضیحات"
+          >
+            <Pencil size={16} />
+          </button>
         </div>
-
-        <textarea
-          dir="rtl"
-          rows={5}
-          value={data.description}
-          onChange={(e) =>
-            setData((d) => ({
-              ...d,
-              description:
-                e.target.value,
-            }))
-          }
-          className="w-full resize-none bg-transparent text-right text-sm text-white placeholder-white/30 outline-none"
-        />
-
-      
       </div>
+
+      {/* Textarea */}
+      <textarea
+        dir="rtl"
+        rows={5}
+        value={data.description}
+        onChange={(e) =>
+          setData((d) => ({
+            ...d,
+            description: e.target.value,
+          }))
+        }
+        className="
+          min-h-32
+          w-full
+          resize-none
+          overflow-y-auto
+          bg-transparent
+          text-right
+          text-sm
+          leading-7
+          text-white
+          placeholder:text-white/30
+          outline-none
+        "
+      />
     </div>
-  );
+  </div>
+);
 }

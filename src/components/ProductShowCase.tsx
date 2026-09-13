@@ -150,94 +150,191 @@ const Toolbar: React.FC<{
 };
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => (
-
-
-
-  <Link to={'/product-details'}>
-    <article className="group flex flex-col overflow-hidden rounded-3xl border border-[#FFFFFF1A] bg-[#FFFFFF1A] transition-all w-[360px] items-center justify-center">
-    <div className="relative h-52 w-full overflow-hidden">
-      <img
-        src={product.image}
-        alt={product.title}
-        loading="lazy"
-        className="h-full w-full rounded-3xl p-4 object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-
-      <div className="absolute inset-0 " />
-    </div>
-
-    <div className=" flex justify-center items-start flex-1 flex-col gap-2 px-5 pt-4 pb-5">
-      <span className="flex items-center gap-1.5 text-xs font-medium text-[#2BFFFF]">
-
-        {product.category}
-      </span>
-
-      <h3 className="text-lg font-semibold text-white">
-        {product.title}
-      </h3>
-
-      <p className="text-sm leading-6 text-white/50">
-        {product.description}
-      </p>
-
+  <Link
+    to="/product-details"
+    className="block w-full"
+  >
+    <article
+      className="
+        group
+        flex
+        w-full
+        flex-col
+        overflow-hidden
+        rounded-3xl
+        border
+        border-[#FFFFFF1A]
+        bg-[#FFFFFF1A]
+        transition-all
+        duration-300
+        hover:border-white/20
+      "
+    >
+      {/* Image */}
       <div
-
         className="
-    group
-    w-10/12
-    rounded-3xl
-    bg-gradient-to-t
-    from-[#A855F7]
-    to-[#4C00FF]
-    mt-3
-    mx-auto
-    flex
-    cursor-pointer
-    items-center
-    justify-around
-    gap-2
-    p-3
-    text-center
-    transition-all
-    duration-300
-    hover:bg-white
-    hover:bg-none
-  "
+          relative
+          h-48
+          w-full
+          overflow-hidden
+          sm:h-52
+        "
       >
-        <span className="whitespace-nowrap text-sm font-semibold text-white transition-colors group-hover:text-[#6155F5]">
-          {formatToman(product.price)} تومان
-        </span>
-
-        <span className="whitespace-nowrap text-sm font-semibold text-white transition-colors group-hover:text-[#6155F5]">
-          |
-        </span>
-
-        <button
-          type="button"
+        <img
+          src={product.image}
+          alt={product.title}
+          loading="lazy"
           className="
-      flex
-      items-center
-      gap-1.5
-      text-xs
-      font-semibold
-      text-white
-      transition-all
-      duration-300
-      group-hover:text-[#6155F5]
-      group-hover:scale-[1.03]
-    "
-        >
-          ثبت سفارش
+            h-full
+            w-full
+            rounded-3xl
+            p-3
+            object-cover
+            transition-transform
+            duration-500
+            group-hover:scale-105
+            sm:p-4
+          "
+        />
 
-          <ChevronLeft className="h-3.5 w-3.5 transition-colors group-hover:text-[#6155F5]" />
-        </button>
+        <div className="absolute inset-0" />
       </div>
-    </div>
-  </article>
-  
-  
-  </Link>
 
+      {/* Content */}
+      <div
+        className="
+          flex
+          flex-1
+          flex-col
+          items-start
+          gap-2
+          px-4
+          pb-5
+          pt-4
+          sm:px-5
+        "
+      >
+        {/* Category */}
+        <span
+          className="
+            flex
+            items-center
+            gap-1.5
+            text-xs
+            font-medium
+            text-[#2BFFFF]
+          "
+        >
+          {product.category}
+        </span>
+
+        {/* Title */}
+        <h3
+          className="
+            line-clamp-2
+            text-base
+            font-semibold
+            text-white
+            sm:text-lg
+          "
+        >
+          {product.title}
+        </h3>
+
+        {/* Description */}
+        <p
+          className="
+            line-clamp-3
+            text-xs
+            leading-6
+            text-white/50
+            sm:text-sm
+          "
+        >
+          {product.description}
+        </p>
+
+        {/* Price / Order */}
+        <div
+          className="
+            mt-3
+            flex
+            w-full
+            items-center
+            justify-around
+            gap-2
+            rounded-3xl
+            bg-gradient-to-t
+            from-[#A855F7]
+            to-[#4C00FF]
+            p-3
+            text-center
+            transition-all
+            duration-300
+            hover:bg-white
+            hover:bg-none
+          "
+        >
+          {/* Price */}
+          <span
+            className="
+              whitespace-nowrap
+              text-xs
+              font-semibold
+              text-white
+              transition-colors
+              group-hover:text-[#6155F5]
+              sm:text-sm
+            "
+          >
+            {formatToman(product.price)} تومان
+          </span>
+
+          {/* Separator */}
+          <span
+            className="
+              text-xs
+              font-semibold
+              text-white
+              sm:text-sm
+            "
+          >
+            |
+          </span>
+
+          {/* Order */}
+          <button
+            type="button"
+            className="
+              flex
+              items-center
+              gap-1
+              whitespace-nowrap
+              text-xs
+              font-semibold
+              text-white
+              transition-all
+              duration-300
+              group-hover:scale-[1.03]
+              group-hover:text-[#6155F5]
+              sm:gap-1.5
+            "
+          >
+            ثبت سفارش
+
+            <ChevronLeft
+              className="
+                h-3.5
+                w-3.5
+                transition-colors
+                group-hover:text-[#6155F5]
+              "
+            />
+          </button>
+        </div>
+      </div>
+    </article>
+  </Link>
 );
 
 const ProductShowCase: React.FC = () => {
@@ -248,40 +345,66 @@ const ProductShowCase: React.FC = () => {
     p.title.includes(query.trim())
   );
 
-  return (
+return (
   <div
     dir="rtl"
     className="
       min-h-screen
       w-full
       bg-[linear-gradient(135deg,#02000A_0%,#140024_35%,#2B0147_65%,#0B1521_100%)]
-      pb-24
+      pb-16
+      sm:pb-24
       font-[system-ui]
       text-white
     "
   >
-      <Toolbar
-        query={query}
-        onQueryChange={setQuery}
-        sort={sort}
-        onSortChange={setSort}
-      />
+    <Toolbar
+      query={query}
+      onQueryChange={setQuery}
+      sort={sort}
+      onSortChange={setSort}
+    />
 
-      <main className="mx-auto mt-8 w-full max-w-[1900px] px-8">
-        {filtered.length === 0 ? (
-          <p className="py-20 text-center text-white/50">
-            محصولی یافت نشد.
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {filtered.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        )}
-      </main>
-    </div>
-  );
+    <main
+      className="
+        mx-auto
+        mt-6
+        sm:mt-8
+        w-full
+        max-w-[1900px]
+        px-4
+        sm:px-6
+        lg:px-8
+      "
+    >
+      {filtered.length === 0 ? (
+        <p className="py-16 text-center text-sm text-white/50 sm:py-20 sm:text-base">
+          محصولی یافت نشد.
+        </p>
+      ) : (
+        <div
+          className="
+            grid
+            w-full
+            grid-cols-1
+            gap-5
+            sm:grid-cols-2
+            sm:gap-6
+            lg:grid-cols-3
+            xl:grid-cols-4
+          "
+        >
+          {filtered.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          ))}
+        </div>
+      )}
+    </main>
+  </div>
+);
 };
 
 export default ProductShowCase;
