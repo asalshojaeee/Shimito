@@ -68,55 +68,107 @@ const specialties: Spec[] = [
   { title: 'اسید ها', Icon: Asid },
 
   { title: 'حلال ها', Icon: Halal },
-    { title: 'مواد آلی', Icon: IconInvestment },
+  { title: 'مواد آلی', Icon: IconInvestment },
 
 
 ]
 
 const Specialties: React.FC = () => {
   return (
-    <section
-      dir='rtl'
-      id='specialties'
-      className='mx-auto w-full pt-6  md:pt-10 md:pb-10 text-white'
-    >
-      <SectionTitle2 className='mb-8'>تخصص ها</SectionTitle2>
 
-      {/* exactly 8 cards */}
-      <div className="grid grid-cols-3 gap-4 md:grid-cols-6 md:gap-5 text-center">
-        {specialties.map(({ title, Icon }, index) => (
+<section
+  dir="rtl"
+  id="specialties"
+  className="
+    mx-auto
+    w-full
+    pt-6
+    text-white
+    md:pt-10
+    md:pb-10
+  "
+>
+  <SectionTitle2 className="mb-8">
+    تخصص ها
+  </SectionTitle2>
+
+  <div
+    className="
+      grid
+      grid-cols-3
+      gap-2
+      text-center
+      sm:gap-3
+      md:grid-cols-6
+      md:gap-5
+    "
+  >
+    {specialties.map(({ title, Icon }, index) => (
+      <div
+        key={title}
+        className={`
+          flex
+          min-w-0
+          flex-col
+          items-center
+          justify-center
+
+          gap-2
+          rounded-xl
+          border
+          border-white/10
+          bg-white/5
+          px-1
+          py-3
+
+          text-center
+
+          backdrop-blur-xl
+          shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]
+
+          sm:gap-3
+          sm:px-2
+          sm:py-4
+
+          md:gap-4
+          md:rounded-3xl
+          md:px-3
+          md:py-4
+
+          lg:px-4
+
+          ${index === 6 ? "md:col-start-2" : ""}
+        `}
+      >
+        <Icon />
+
+        {title !== "" && (
           <div
-            key={title}
-            className={`
-        flex h-auto flex-col items-center justify-center
-        gap-4 rounded-xl border border-white/10
-        bg-white/5 px-4 py-4 text-center
-        backdrop-blur-xl
-        shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]
-        md:rounded-3xl
+            className="
+              max-w-full
+              whitespace-nowrap
+              overflow-hidden
+              text-ellipsis
 
-        ${index >= 6
-                ? 'md:col-span-1'
-                : ''
-              }
+              text-[10px]
+              font-thin
+              text-white/90
 
-        ${index === 6
-                ? 'md:col-start-2'
-                : ''
-              }
-      `}
+              sm:text-xs
+              md:text-base
+              lg:text-lg
+              xl:text-xl
+            "
           >
-            <Icon />
-
-            {title !== '' && (
-              <div className="text-sm font-thin text-white/90 md:text-xl">
-                {title}
-              </div>
-            )}
+            {title}
           </div>
-        ))}
+        )}
       </div>
-    </section>
+    ))}
+  </div>
+</section>
+
+
   )
 }
 

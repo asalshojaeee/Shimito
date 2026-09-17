@@ -62,107 +62,131 @@ const Navbar: React.FC = () => {
   const avatarUrl = user?.user_metadata?.avatar_url;
 
   return (
-    <div
+
+<div
+  className="
+    fixed
+    top-0
+    md:top-3
+    w-full
+    md:w-[90vw]
+    lg:w-[85vw]
+    xl:max-w-[85vw]
+    h-[12vh]
+    z-20
+
+    px-4
+    md:px-5
+    lg:px-6
+
+    border
+    border-[#EF2CC51A]
+
+    bg-[#EF2CC51A]
+    backdrop-blur-[40px]
+
+    shadow-[0_0_40px_-15px_rgba(226,139,254,0.4)]
+
+    md:rounded-[30px]
+  "
+>
+  <div className="flex h-full w-full items-center justify-between">
+
+    {/* Logo */}
+    <img
+      src="/logo-nav.png"
+      alt="لوگو"
       className="
-        fixed
-        top-0
-        md:top-3
-        w-full
-        md:max-w-[85vw]
-        h-[10vh]
-        z-20
-        p-6
+        w-14
+        md:w-14
+        lg:w-16
+        shrink-0
+      "
+    />
 
-        border
-        border-[#7C5CFF]
-
-        bg-[#EF2CC51A]
-        backdrop-blur-[40px]
-
-        shadow-[0_0_40px_-15px_rgba(226,139,254,0.4)]
-
-        md:rounded-[30px]
+    {/* Navbar */}
+    <nav
+      className="
+        hidden
+        md:flex
+        items-center
+        justify-end
+        gap-3
+        lg:gap-5
+        xl:gap-6
+        font-normal
+        text-white
+        whitespace-nowrap
       "
     >
-  
-      <div className="flex h-full w-full items-center justify-between">
+      <NavLink
+        to="/about"
+        className={({ isActive }) =>
+          `${linkBase} ${
+            isActive ? linkActive : linkInactive
+          }`
+        }
+      >
+        حساب کاربری
+      </NavLink>
 
-      
-        <img
-          src="/logo-nav.png"
-          alt="لوگو"
-          className="w-14 md:w-16"
-        />
+      <NavLink
+        to="/services"
+        className={({ isActive }) =>
+          `${linkBase} ${
+            isActive ? linkActive : linkInactive
+          }`
+        }
+      >
+        گزینه ها
+      </NavLink>
 
-    
-        <nav className="hidden md:flex items-center gap-6 font-normal text-white">
+      <NavLink
+        to="/product"
+        className={({ isActive }) =>
+          `${linkBase} ${
+            isActive ? linkActive : linkInactive
+          }`
+        }
+      >
+        خدمات
+      </NavLink>
 
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              `${linkBase} ${
-                isActive ? linkActive : linkInactive
-              }`
-            }
-          >
-            حساب کاربری
-          </NavLink>
+      <NavLink
+        to="/our-products"
+        className={({ isActive }) =>
+          `${linkBase} ${
+            isActive ? linkActive : linkInactive
+          }`
+        }
+      >
+        محصولات
+      </NavLink>
 
-          <NavLink
-            to="/services"
-            className={({ isActive }) =>
-              `${linkBase} ${
-                isActive ? linkActive : linkInactive
-              }`
-            }
-          >
-            گزینه ها
-          </NavLink>
+      <NavLink
+        to="/Committees"
+        className={({ isActive }) =>
+          `${linkBase} ${
+            isActive ? linkActive : linkInactive
+          }`
+        }
+      >
+        کمیته ها
+      </NavLink>
 
-          <NavLink
-            to="/product"
-            className={({ isActive }) =>
-              `${linkBase} ${
-                isActive ? linkActive : linkInactive
-              }`
-            }
-          >
-            خدمات
-          </NavLink>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          `${linkBase} ${
+            isActive ? linkActive : linkInactive
+          } border-0`
+        }
+      >
+        خانه
+      </NavLink>
+    </nav>
 
-          <NavLink
-            to="/our-products"
-            className={({ isActive }) =>
-              `${linkBase} ${
-                isActive ? linkActive : linkInactive
-              }`
-            }
-          >
-            محصولات
-          </NavLink>
 
-          <NavLink
-            to="/Committees"
-            className={({ isActive }) =>
-              `${linkBase} ${
-                isActive ? linkActive : linkInactive
-              }`
-            }
-          >
-            کمیته ها
-          </NavLink>
-
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              `${linkBase} ${
-                isActive ? linkActive : linkInactive
-              } border-0`
-            }
-          >
-            خانه
-          </NavLink>
-        </nav>
 
       
       
@@ -230,23 +254,38 @@ const Navbar: React.FC = () => {
               )}
             </>
           ) : (
-            <NavLink
-              to="/register"
-              onClick={() => setMenuOpen(false)}
-              className="
-                rounded-[20px]
-                border
-                border-[#A855F766]
-                bg-[#A855F71A]
-                px-[20px]
-                py-[12px]
-                text-[20px]
-                font-bold
-                text-white
-              "
-            >
-              ورود به نرم افزار
-            </NavLink>
+          <NavLink
+  to="/register"
+  onClick={() => setMenuOpen(false)}
+  className="
+    rounded-[20px]
+    border
+    border-[#A855F766]
+    bg-[#A855F71A]
+
+    px-[14px]
+    md:px-[12px]
+    lg:px-[16px]
+    xl:px-[20px]
+
+    py-[10px]
+    md:py-[8px]
+    lg:py-[10px]
+    xl:py-[12px]
+
+    text-[16px]
+    md:text-[14px]
+    lg:text-[16px]
+    xl:text-[20px]
+
+    font-bold
+    text-white
+    whitespace-nowrap
+    shrink-0
+  "
+>
+  ورود به نرم افزار
+</NavLink>
           )}
         </div>
 

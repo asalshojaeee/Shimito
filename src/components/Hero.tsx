@@ -8,10 +8,10 @@ type StatProps = {
 const Stat: React.FC<StatProps> = ({ number, label }) => {
   return (
     <div className='flex flex-col justify-center items-center gap-2'>
-      
-<span className='text-4xl font-extrabold tracking-tight sm:text-6xl'>
-  {number}
-</span>
+
+      <span className='text-4xl font-extrabold tracking-tight sm:text-6xl'>
+        {number}
+      </span>
 
       <span className='text-white text-[20px] md:text-[32px] font-thin'>
         {label}
@@ -46,18 +46,18 @@ const Hero: React.FC = () => {
         <div className='col-start-2 row-start-1 flex items-center justify-center w-full'>
 
           <div className='w-full max-w-xl rounded-[50px] bg-[#EF2CC51A] p-6 md:p-10 backdrop-blur-xl shadow-[0_10px_60px_-15px_rgba(0,0,0,0.6)] flex flex-col items-center md:items-end gap-6 md:gap-8'>
-<h1 className='w-full text-3xl flex flex-col items-center leading-tight tracking-tight gap-2'>
+            <h1 className='w-full text-3xl flex flex-col items-center leading-tight tracking-tight gap-2'>
 
-  <span className='font-normal text-center'>
-    آشنایی با تیم
-  </span>
+              <span className='font-normal text-center'>
+                آشنایی با تیم
+              </span>
 
-  <span className='font-normal text-center -translate-x-20'>
-    <span className='font-extrabold'>متخصص</span>
-    <span className='font-normal'> ما</span>
-  </span>
+              <span className='font-normal text-center -translate-x-20'>
+                <span className='font-extrabold'>متخصص</span>
+                <span className='font-normal'> ما</span>
+              </span>
 
-</h1>
+            </h1>
 
             <p className='text-xs md:text-sm w-full text-center md:text-right text-white/85'>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
@@ -119,13 +119,13 @@ const Hero: React.FC = () => {
       </div>
 
 
-    
+
       <div className='relative flex md:hidden flex-col w-full max-w-[95vw] gap-8 mt-16 px-4'>
 
-  
 
 
-   
+
+
         <div className='flex items-center justify-center w-full'>
 
           <div className='w-full rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-xl shadow-[0_10px_60px_-15px_rgba(0,0,0,0.6)] flex flex-col items-center gap-6'>
@@ -155,7 +155,7 @@ const Hero: React.FC = () => {
             </p>
 
 
-    
+
             <div className='flex flex-wrap justify-center gap-x-8 gap-y-6 text-white/90'>
 
               <Stat
@@ -176,7 +176,7 @@ const Hero: React.FC = () => {
             </div>
 
 
-           
+
             <div className='w-full'>
 
               <a

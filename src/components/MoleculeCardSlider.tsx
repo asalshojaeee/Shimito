@@ -13,213 +13,183 @@ export interface MoleculeCardSliderProps {
   interval?: number;
 }
 
-const MoleculeCardSlider: React.FC<MoleculeCardSliderProps> = ({
-  items,
-  interval = 3000,
-}) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
 
-  // const cardWidth = 280;
-  // const overlap = 45;
-
-  
-  // const slideWidth = cardWidth - overlap;
-
-  useEffect(() => {
-
-    if (items.length <= 1 || paused) return;
-
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => {
-      
-        if (prev >= items.length - 1) {
-          return 0;
-        }
-
-        return prev + 1;
-      });
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [items.length, interval, paused]);
-
-return (
-<section
-  dir="rtl"
-  className="
-    relative
-    w-full
-    py-16
-  "
-  onMouseEnter={() => setPaused(true)}
-  onMouseLeave={() => setPaused(false)}
->
-  <div
-    className="
-      pointer-events-none
-      absolute
-      left-1/2
-      top-1/2
-      -translate-x-1/2
-      -translate-y-1/2
-      w-full
-      h-[300px]
-      rounded-full
-      blur-[120px]
-    "
-  />
-
-
-<div className="relative hidden md:block w-full">
-
-    <div
+const MoleculeCardSlider: React.FC<MoleculeCardSliderProps> = ({ items }) => {
+  return (
+    <section
+      dir="rtl"
       className="
         relative
-        mx-auto
         w-full
-        max-w-[1200px]
-        min-h-[450px]
-
-        flex
-        items-center
-        justify-center
+        py-16
       "
     >
-      {items.map((item, index) => {
-        const position =
-          (index - currentIndex + items.length) % items.length;
+      {/* Glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-1/2
+          -translate-x-1/2
+          -translate-y-1/2
+          w-full
+          h-[300px]
+          rounded-full
+          blur-[120px]
+        "
+      />
 
-        return (
-          <Link
-            key={item.id}
-            to="/our-products"
-            className="absolute shrink-0"
-            style={{
-              zIndex: items.length - position,
+      <div className="relative hidden md:block w-full">
+        <div
+          className="
+            relative
+            mx-auto
+            w-full
+            max-w-[1200px]
+            min-h-[450px]
 
-              right: `
-                calc(50% - 560px + ${position * 235}px)
-              `,
+            flex
+            items-center
+            justify-center
+          "
+        >
+          {items.map((item, index) => {
+            // موقعیت ثابت کارت‌ها
+            const position = index;
 
-              transform: `
-                translateY(${position === 0 ? "-25px" : "0px"})
-              `,
+            return (
+              <Link
+                key={item.id}
+                to="/our-products"
+                className="absolute shrink-0"
+                style={{
+                  zIndex: items.length - position,
 
-              transition:
-                "right 700ms ease-in-out, transform 700ms ease-in-out",
+                  right: `
+                    calc(50% - 560px + ${position * 235}px)
+                  `,
 
-              width: "280px",
-              minHeight: "390px",
-            }}
-          >
-            <article
-              className="
-                group
-                relative
-                w-[280px]
-                min-h-[390px]
+                  transform: `
+                    translateY(${position === 0 ? "-25px" : "0px"})
+                  `,
 
-                rounded-[24px]
-
-                backdrop-blur-xl
-                p-5
-
-                flex
-                flex-col
-                items-center
-
-                transition-all
-                duration-300
-
-                hover:z-50
-                hover:-translate-y-2
-              "
-            >
-              <div
-                className="
-                  relative
-                  w-full
-                  h-[230px]
-
-                  flex
-                  items-center
-                  justify-center
-
-                  rounded-[20px]
-                  overflow-hidden
-                "
+                  width: "280px",
+                  minHeight: "390px",
+                }}
               >
-                <div
+                <article
                   className="
-                    pointer-events-none
-                    absolute
-                    w-[160px]
-                    h-[160px]
-                    rounded-full
-                    bg-[#FFFFFF1A]
-                    blur-[50px]
-                  "
-                />
-
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="
+                    group
                     relative
-                    z-10
-                    max-w-[90%]
-                    max-h-[90%]
-                    object-contain
+                    w-[280px]
+                    min-h-[390px]
 
-                    transition-transform
-                    duration-500
+                    rounded-[24px]
 
-                    group-hover:scale-105
+                    backdrop-blur-xl
+                    p-5
+
+                    flex
+                    flex-col
+                    items-center
+
+                    transition-all
+                    duration-300
+
+                    hover:z-50
+                    hover:-translate-y-2
                   "
-                />
-              </div>
+                >
+                  {/* Image */}
+                  <div
+                    className="
+                      relative
+                      w-full
+                      h-[230px]
 
-              <h3
-                className="
-                  mt-5
-                  text-[18px]
-                  font-thin
-                  text-[#290051]
-                  text-center
-                "
-              >
-                {item.name}
-              </h3>
+                      flex
+                      items-center
+                      justify-center
 
-              <div
-                className="
-                  mt-3
-                  mb-3
-                  w-12
-                  h-[2px]
-                  rounded-full
-                "
-              />
+                      rounded-[20px]
+                      overflow-hidden
+                    "
+                  >
+                    <div
+                      className="
+                        pointer-events-none
+                        absolute
+                        w-[160px]
+                        h-[160px]
+                        rounded-full
+                        bg-[#FFFFFF1A]
+                        blur-[50px]
+                      "
+                    />
 
-              <p
-                className="
-                  text-[13px]
-                  leading-7
-                  text-white
-                  text-center
-                "
-              >
-                {item.descriptionFa}
-              </p>
-            </article>
-          </Link>
-        );
-      })}
-    </div>
-  </div>
-</section>
-);
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="
+                        relative
+                        z-10
+                        max-w-[90%]
+                        max-h-[90%]
+                        object-contain
+
+                        transition-transform
+                        duration-500
+
+                        group-hover:scale-105
+                      "
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <h3
+                    className="
+                      mt-5
+                      text-[18px]
+                      font-thin
+                      text-[#290051]
+                      text-center
+                    "
+                  >
+                    {item.name}
+                  </h3>
+
+                  {/* Divider */}
+                  <div
+                    className="
+                      mt-3
+                      mb-3
+                      w-12
+                      h-[2px]
+                      rounded-full
+                    "
+                  />
+
+                  {/* Description */}
+                  <p
+                    className="
+                      text-[13px]
+                      leading-7
+                      text-white
+                      text-center
+                    "
+                  >
+                    {item.descriptionFa}
+                  </p>
+                </article>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 };
+
 
 export default MoleculeCardSlider;

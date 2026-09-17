@@ -3,6 +3,7 @@ import { Download, FileText } from "lucide-react";
 
 
 import PayCompleteSampleModal from "./PayCompleteSampleModal";
+import { Link } from "react-router";
 
 interface ProductTag {
   id: string;
@@ -107,39 +108,43 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
     "
   >
     {/* Product Image */}
-    <div
-      className="
-        h-28
-        w-28
-        overflow-hidden
-        rounded-2xl
-        border-2
-        border-purple-400/60
-        shadow-[0_0_30px_rgba(168,85,247,0.35)]
-        sm:h-32
-        sm:w-32
-      "
-    >
-      <img
-        src={product.avatarUrl}
-        alt={product.name}
-        className="h-full w-full object-cover"
-      />
-    </div>
+    <div className="flex w-full flex-col items-center gap-4">
 
-    {/* Product Name */}
-    <h2
-      className="
-        text-center
-        text-xl
-        font-bold
-        text-white
-        sm:text-2xl
-        lg:text-right
-      "
-    >
-      {product.name}
-    </h2>
+      {/* Product Image */}
+      <div
+        className="
+      h-28
+      w-28
+      overflow-hidden
+      rounded-2xl
+      border-2
+      border-purple-400/60
+      shadow-[0_0_30px_rgba(168,85,247,0.35)]
+      sm:h-32
+      sm:w-32
+    "
+      >
+        <img
+          src={product.avatarUrl}
+          alt={product.name}
+          className="h-full w-full object-cover"
+        />
+      </div>
+
+      {/* Product Name */}
+      <h2
+        className="
+      text-center
+      text-xl
+      font-bold
+      text-white
+      sm:text-2xl
+    "
+      >
+        {product.name}
+      </h2>
+
+    </div>
 
     {/* Information */}
     <div className="flex w-full flex-col gap-3">
@@ -274,53 +279,31 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
           sm:flex-row
         "
       >
-        <button
-          type="button"
+        <Link
+          to={'/addtocart'}
           className="
             w-full
             rounded-xl
-            border
-            border-white/10
+            
             bg-[#FF00E533]
             py-3
             text-sm
             font-medium
             text-white
             transition-all
-            hover:border-[#EF2CC5]
-            hover:bg-gradient-to-t
-            hover:from-[#FF00E533]
-            hover:to-[#99008ACC]
+     
             sm:flex-1
-          "
-        >
-          خرید کامل
-        </button>
-
-        <button
-          type="button"
-          onClick={onOpenSampleModal}
-          className="
-            w-full
-            rounded-xl
-            border
-            border-white/10
-            bg-[#FF00E533]
-            py-3
-            text-sm
-            font-medium
-            text-white
-            transition-all
-            hover:border-[#EF2CC5]
+            text-center
+                hover:border-[#EF2CC5]
             hover:bg-gradient-to-t
             hover:from-[#FF00E533]
             hover:to-[#99008ACC]
             hover:shadow-[0_14px_14px_0_#7F0A7B63]
-            sm:flex-1
           "
         >
-          خرید نمونه
-        </button>
+          افزودن به سبد خرید        </Link>
+
+
       </div>
     </div>
   </aside>
@@ -393,19 +376,20 @@ const ProductDetails: React.FC = () => {
             {/* Description + Gallery */}
             <div
               className="
-                flex
-                min-w-0
-                w-full
-                flex-1
-                flex-col
-                gap-5
-                rounded-2xl
-                bg-[#FFFFFF0A]
-                p-4
-                sm:rounded-3xl
-                sm:p-5
-                lg:gap-6
-              "
+    flex
+    min-w-0
+    w-full
+    flex-1
+    flex-col
+    justify-between
+    gap-5
+    rounded-2xl
+    bg-[#FFFFFF0A]
+    p-4
+    sm:rounded-3xl
+    sm:p-5
+    lg:gap-6
+  "
             >
 
               {/* Description */}

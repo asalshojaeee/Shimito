@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Download, FileText } from "lucide-react";
-import { Link } from "react-router";
 
 interface ProductTag {
   id: string;
@@ -287,88 +286,139 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
         <Download className="h-4 w-4 shrink-0 text-white" />
       </button>
 
-     <div
-  className="
-    flex
-    w-full
-    items-center
-    justify-center
-    gap-2
-    pt-1
-  "
->
-  {/* Plus */}
-  <button
-    type="button"
-    onClick={() => setQuantity(quantity + 1)}
-    className="
-      h-11
-      w-12
-      shrink-0
-      rounded-xl
-      bg-[#FF00E533]
-      text-2xl
-      font-medium
-      text-white
-      transition-all
-      hover:bg-[#FF00E555]
-      sm:h-12
-      sm:w-14
-      sm:text-3xl
-    "
-  >
-    +
-  </button>
+      {/* Quantity */}
+      <div
+        className="
+          flex
+          w-full
+          flex-wrap
+          items-center
+          justify-center
+          gap-2
+          pt-1
+          sm:justify-start
+        "
+      >
+        {/* Plus */}
+        <button
+          type="button"
+          onClick={() => setQuantity(quantity + 1)}
+          className="
+            h-11
+            w-12
+            shrink-0
+            rounded-3xl
+            bg-[#FF00E533]
+            text-2xl
+            font-medium
+            text-white
+            transition-all
+            hover:bg-[#FF00E555]
+            sm:h-12
+            sm:w-14
+            sm:text-3xl
+          "
+        >
+          +
+        </button>
 
-  {/* Sample */}
-  <Link 
-  to={'/'}
-    className="
-      h-[50px]
-     
-      rounded-xl
-      bg-[#FF00E533]
-      px-3
-      py-2
-      text-xs
-      text-center
-      text-white
-      sm:px-4
-      sm:text-sm
-    "
-  >
-    10 کیلو گرم نمونه
-  </Link>
+        {/* Minus */}
+        <button
+          type="button"
+          onClick={() =>
+            setQuantity(Math.max(1, quantity - 1))
+          }
+          className="
+            h-11
+            w-12
+            shrink-0
+            rounded-3xl
+            border
+            border-[#EF2CC5]
+            bg-gradient-to-t
+            from-[#FF00E533]
+            to-[#99008ACC]
+            text-2xl
+            font-medium
+            text-white
+            transition-all
+            hover:shadow-[0_10px_20px_0_#7F0A7B63]
+            sm:h-12
+            sm:w-14
+            sm:text-3xl
+          "
+        >
+          -
+        </button>
 
-  {/* Minus */}
-  <button
-    type="button"
-    onClick={() =>
-      setQuantity(Math.max(1, quantity - 1))
-    }
-    className="
-      h-11
-      w-12
-      shrink-0
-      rounded-xl
-      border
-      border-[#EF2CC5]
-      bg-gradient-to-t
-      from-[#FF00E533]
-      to-[#99008ACC]
-      text-2xl
-      font-medium
-      text-white
-      transition-all
-      hover:shadow-[0_10px_20px_0_#7F0A7B63]
-      sm:h-12
-      sm:w-14
-      sm:text-3xl
-    "
-  >
-    -
-  </button>
-</div>
+        {/* Quantity Number */}
+        <p
+          className="
+            flex
+            h-11
+            min-w-12
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-[#FF00E51A]
+            px-3
+            text-base
+            font-bold
+            text-white
+            sm:h-12
+            sm:min-w-14
+            sm:text-lg
+          "
+        >
+          {quantity}
+        </p>
+
+        {/* Units */}
+        <div
+          className="
+            flex
+            shrink-0
+            items-center
+            gap-2
+            sm:mr-auto
+          "
+        >
+          <button
+            type="button"
+            className="
+              shrink-0
+              rounded-full
+              bg-[#99008A]
+              px-3
+              py-2
+              text-xs
+              text-white
+              sm:px-4
+              sm:text-sm
+            "
+          >
+            کیلو گرم
+          </button>
+
+          <button
+            type="button"
+            className="
+              shrink-0
+              rounded-full
+              bg-[#FF00E51A]
+              px-3
+              py-2
+              text-xs
+              text-white
+              sm:px-4
+              sm:text-sm
+            "
+          >
+            تن
+          </button>
+        </div>
+      </div>
     </div>
   </aside>
 );
@@ -433,78 +483,76 @@ const CountiueOfPayment: React.FC = () => {
             />
 
             {/* Product Content */}
-       <div
-  className="
-    flex
-    min-w-0
-    w-full
-    flex-1
-    flex-col
-    justify-between
-    gap-5
-    rounded-2xl
-    bg-[#FFFFFF0A]
-    p-4
-    sm:rounded-3xl
-    sm:p-5
-    lg:gap-6
-  "
->
-  {/* Description */}
-  <div className="w-full">
-    <h3
-      className="
-        mb-3
-        text-base
-        font-bold
-        text-white
-        sm:mb-4
-        sm:text-lg
-      "
-    >
-      درباره محصول
-    </h3>
+            <div
+              className="
+                flex
+                min-w-0
+                w-full
+                flex-1
+                flex-col
+                gap-5
+                rounded-2xl
+                bg-[#FFFFFF0A]
+                p-4
+                sm:rounded-3xl
+                sm:p-5
+                lg:gap-6
+              "
+            >
+              {/* Description */}
+              <div className="w-full">
+                <h3
+                  className="
+                    mb-3
+                    text-base
+                    font-bold
+                    text-white
+                    sm:mb-4
+                    sm:text-lg
+                  "
+                >
+                  درباره محصول
+                </h3>
 
-    <p
-      className="
-        text-justify
-        text-sm
-        leading-7
-        text-white/70
-        sm:text-base
-        sm:leading-8
-      "
-    >
-      {PRODUCT.description}
-    </p>
-  </div>
+                <p
+                  className="
+                    text-justify
+                    text-sm
+                    leading-7
+                    text-white/70
+                    sm:text-base
+                    sm:leading-8
+                  "
+                >
+                  {PRODUCT.description}
+                </p>
+              </div>
 
-  {/* Gallery */}
-  <div
-    className="
-      mt-auto
-      grid
-      w-full
-      grid-cols-2
-      gap-3
-      pt-3
-      sm:grid-cols-3
-      sm:gap-4
-      sm:pt-6
-      md:grid-cols-4
-      lg:grid-cols-5
-      lg:pt-10
-    "
-  >
-    {PRODUCT.gallery.map((item) => (
-      <GalleryThumb
-        key={item.id}
-        label={item.label}
-        imageUrl={item.imageUrl}
-      />
-    ))}
-  </div>
-</div>
+              {/* Gallery */}
+              <div
+                className="
+                  grid
+                  w-full
+                  grid-cols-2
+                  gap-3
+                  pt-3
+                  sm:grid-cols-3
+                  sm:gap-4
+                  sm:pt-6
+                  md:grid-cols-4
+                  lg:grid-cols-5
+                  lg:pt-10
+                "
+              >
+                {PRODUCT.gallery.map((item) => (
+                  <GalleryThumb
+                    key={item.id}
+                    label={item.label}
+                    imageUrl={item.imageUrl}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </main>
       </div>

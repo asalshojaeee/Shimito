@@ -29,7 +29,9 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
             className="fixed  inset-0 z-[9999] flex items-center justify-center bg-[#A855F71A] backdrop-blur-sm px-4"
         >
             <div
-                className="border border-[#A855F7]"
+                className="border border-[#A855F7]
+                bg-[#A855F71A] backdrop-blur-sm
+                "
                 dir="rtl"
                 style={{
 

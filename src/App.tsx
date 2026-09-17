@@ -11,6 +11,7 @@ import ProfileEditor from './pages/ProfileEditor'
 import AddProduct from './pages/AddProduct'
 import MyAcount from './pages/MyAcount'
 import MyProduct from './pages/MyProduct'
+import AddToCart from './components/AddToCart'
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const MemberPage = lazy(() => import('./pages/MemeberPage'))
@@ -72,6 +73,14 @@ export default function App() {
           element={
             <Suspense fallback={<Loader />}>
               <ProductDetails />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/addtocart'
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddToCart />
             </Suspense>
           }
         />
@@ -165,7 +174,7 @@ export default function App() {
           path="addproduct"
           element={<AddProduct />}
         />
-            <Route
+        <Route
           path="myproduct"
           element={<MyProduct />}
         />
