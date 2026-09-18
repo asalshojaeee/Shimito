@@ -143,124 +143,173 @@ export default function CompanySignupForm() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2">
 
-                <div className="order-1">
-                  <label className="block text-white/70 text-sm mb-3">
-                    <span className="text-white">*</span>{" "}
-                    حوزه تخصصی
-                  </label>
+  <div className="order-1 flex flex-col gap-5">
+    <UploadRow
+      label="عکس کاربری خود را با پسوند jpg آپلود کنید"
+      icon={
+        <img
+          src="/Image Add.png"
+          alt="افزودن تصویر"
+          className="h-5 w-5"
+        />
+      }
+      accept="image/jpeg"
+      file={avatarFile}
+      onFile={setAvatarFile}
+    />
 
-                  <input
-                    type="text"
-                    value={tagInput}
-                    onChange={(e) => setTagInput(e.target.value)}
-                    onKeyDown={addTag}
-                    className="w-full bg-transparent border-b border-white/25 pb-2 text-white text-sm outline-none focus:border-fuchsia-400 transition-colors"
-                  />
+    <UploadRow
+      icon={<FileText size={18} />}
+      label="فایل رزومه خود را با پسوند pdf آپلود کنید"
+      accept="application/pdf"
+      file={resumeFile}
+      onFile={setResumeFile}
+    />
+  </div>
 
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="flex items-center gap-2 rounded-full bg-white border border-white/10 px-3.5 py-1.5 text-sm text-[#6155F5]"
-                      >
-                        <button
-                          type="button"
-                          onClick={() => removeTag(tag)}
-                          className="text-gray-400 transition-colors"
-                        >
-                          <X size={13} />
-                        </button>
+ 
+  <div className="order-2">
+    <label className="mb-3 block text-sm text-white/70">
+      <span className="text-white">*</span>
+      {" "}
+      حوزه تخصصی
+    </label>
 
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+    <input
+      type="text"
+      value={tagInput}
+      onChange={(e) => setTagInput(e.target.value)}
+      onKeyDown={addTag}
+      className="
+        w-full
+        border-b
+        border-white/25
+        bg-transparent
+        pb-2
+        text-sm
+        text-white
+        outline-none
+        transition-colors
+        focus:border-fuchsia-400
+      "
+    />
+  </div>
+</div>
 
-                <div className="order-2 flex flex-col gap-5 p-5">
+        
 
-                  <UploadRow
-                    label="عکس کاربری خود را با پسوند jpg آپلود کنید"
-                    icon={<img src="Image Add.png" className="w-5 h-5" />}
-                    accept="image/jpeg"
-                    file={avatarFile}
-                    onFile={setAvatarFile}
-                  />
+ {/* قوانین و مقررات */}
+<div
+  className="
+    flex
+    w-full
+    flex-wrap
+    items-center
+    justify-center
+    gap-2
+    text-center
+    text-sm
+    text-white/70
+  "
+>
+  <label className="flex cursor-pointer select-none items-center gap-2">
+    <input
+      type="checkbox"
+      checked={agreed}
+      onChange={(e) => setAgreed(e.target.checked)}
+      className="
+        h-4
+        w-4
+        rounded
+        border-white/30
+        bg-transparent
+        accent-fuchsia-500
+      "
+    />
 
-                  <UploadRow
+    <span>
+      قوانین و مقررات را خوانده‌ام و با آن موافقت می‌کنم
+    </span>
+  </label>
 
-                    icon={<FileText size={18} />}
+  <a
+    href="#"
+    className="text-[#4AD7FF] underline"
+  >
+    قوانین و مقررات
+  </a>
+</div>
 
+{/* دکمه ثبت‌نام */}
+<button
+  type="submit"
+  className="
+    mx-auto
+    block
+    w-full
+    max-w-[513px]
+    rounded-xl
+    bg-gradient-to-l
+    from-white
+    to-purple-100
+    py-3.5
+    text-sm
+    font-semibold
+    text-[#6155F5]
+    shadow-[0_0_30px_rgba(255,255,255,0.15)]
+    transition-opacity
+    hover:opacity-90
+  "
+>
+  ثبت نام شرکت
+</button>
 
-                    label="فایل رزومه خود را با پسوند pdf آپلود کنید"
-                    accept="application/pdf"
-                    file={resumeFile}
-                    onFile={setResumeFile}
-                  />
+{/* ثبت‌نام با شبکه‌های اجتماعی */}
+<div
+  className="
+    flex
+    w-full
+    flex-wrap
+    items-center
+    justify-center
+    gap-x-8
+    gap-y-4
+    text-sm
+    text-white/70
+  "
+>
+  <button
+    type="button"
+    className="flex items-center gap-2 text-white"
+  >
+    <GoogleIcon />
+    ثبت نام با گوگل
+  </button>
 
-                </div>
-                
-              </div>
+  <button
+    type="button"
+    className="flex items-center gap-2 text-white"
+  >
+    <Facebook
+      size={16}
+      className="text-[#1877F2]"
+    />
+    ثبت نام با فیسبوک
+  </button>
+</div>
 
-              <div className="flex flex-wrap items-center gap-2 text-sm text-white/70">
-                <label className="flex items-center gap-2 cursor-pointer select-none">
-                  <input
-                    type="checkbox"
-                    checked={agreed}
-                    onChange={(e) => setAgreed(e.target.checked)}
-                    className="w-4 h-4 rounded border-white/30 bg-transparent accent-fuchsia-500"
-                  />
-
-                  قوانین و مقررات را خوانده ام و با آن موافقت میکنم
-                </label>
-
-                <a
-                  href="#"
-                  className="text-[#4AD7FF] underline mr-1"
-                >
-                  قوانین و مقررات
-                </a>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-gradient-to-l from-white to-purple-100 text-[#6155F5] font-semibold py-3.5 text-sm hover:opacity-90 transition-opacity shadow-[0_0_30px_rgba(255,255,255,0.15)]"
-              >
-                ثبت نام شرکت
-              </button>
-
-              <div className="flex items-center justify-between text-sm text-white/70">
-                <button
-                  type="button"
-                  className="flex items-center gap-2 text-white"
-                >
-                  <GoogleIcon />
-                  ثبت نام با گوگل
-                </button>
-
-                <button
-                  type="button"
-                  className="flex items-center gap-2 text-white"
-                >
-                  <Facebook
-                    size={16}
-                    className="text-[#1877F2]"
-                  />
-                  ثبت نام با فیسبوک
-                </button>
-              </div>
-
-              <p className="text-center text-sm text-white">
-                قبلا ثبت نام کرده اید؟{" "}
-                <a
-                  href="#"
-                  className="text-[#4AD7FF] hover:underline"
-                >
-                  ورود
-                </a>
-              </p>
+{/* ورود */}
+<p className="text-center text-sm text-white">
+  قبلا ثبت نام کرده‌اید؟{" "}
+  <a
+    href="#"
+    className="text-[#4AD7FF] hover:underline"
+  >
+    ورود
+  </a>
+</p>
             </form>
           </div>
         </div>
@@ -310,15 +359,49 @@ function UploadRow({
   const inputId = React.useId();
 
   return (
-    <div className="flex items-center justify-between gap-4 w-full">
-
-      <span className="text-sm text-white/70 leading-6 text-right">
+    <div
+      className="
+        flex
+        w-full
+        flex-row-reverse
+        items-center
+        justify-center
+        gap-2
+      "
+    >
+      {/* متن سمت چپ */}
+      <span
+        className="
+          min-w-0
+          flex-1
+       
+          text-sm
+          leading-6
+          text-white/70
+        "
+      >
         {file ? file.name : label}
       </span>
 
+      {/* آیکن سمت راست */}
       <label
         htmlFor={inputId}
-        className="flex-shrink-0 w-11 h-11 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-white cursor-pointer hover:bg-white/20 transition-colors"
+        className="
+          flex
+          h-11
+          w-11
+          shrink-0
+          cursor-pointer
+          items-center
+          justify-center
+          rounded-xl
+          border
+          border-white/10
+          bg-white/10
+          text-white
+          transition-colors
+          hover:bg-white/20
+        "
       >
         {icon}
 

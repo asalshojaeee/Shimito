@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route, Navigate } from 'react-router'
 import Layout from './Layout/Layout'
 import CompanyPage from './components/CompanyPage'
 import Loader from './components/Loader'
@@ -12,6 +12,7 @@ import AddProduct from './pages/AddProduct'
 import MyAcount from './pages/MyAcount'
 import MyProduct from './pages/MyProduct'
 import AddToCart from './components/AddToCart'
+import KiloOfProducts from './components/KiloOfProducts'
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const MemberPage = lazy(() => import('./pages/MemeberPage'))
@@ -92,6 +93,41 @@ export default function App() {
             </Suspense>
           }
         />
+
+                <Route
+          path='/kiloofproducts'
+          element={
+            <Suspense fallback={<Loader />}>
+              <KiloOfProducts />
+            </Suspense>
+          }
+        />
+
+<Route
+  path="/profileeditor"
+  element={
+    <Suspense fallback={<Loader />}>
+      <ProfileEditor />
+    </Suspense>
+  }
+>
+  <Route index element={<Navigate to="account" replace />} />
+
+  <Route
+    path="account"
+    element={<MyAcount />}
+  />
+
+  <Route
+    path="addproduct"
+    element={<AddProduct />}
+  />
+
+  <Route
+    path="myproduct"
+    element={<MyProduct />}
+  />
+</Route>
         <Route
           path='/our-team/:id'
           element={
@@ -156,29 +192,7 @@ export default function App() {
       />
 
 
-      <Route
-        path="/profileeditor"
-        element={
 
-          <Suspense fallback={<Loader />}>
-            <ProfileEditor />
-          </Suspense>
-
-        }
-      >
-        <Route
-          path="account"
-          element={<MyAcount />}
-        />
-        <Route
-          path="addproduct"
-          element={<AddProduct />}
-        />
-        <Route
-          path="myproduct"
-          element={<MyProduct />}
-        />
-      </Route>
 
 
     </Routes>

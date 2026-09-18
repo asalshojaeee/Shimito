@@ -268,43 +268,36 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
         <Download className="h-4 w-4 shrink-0 text-white" />
       </button>
 
-      {/* Buttons */}
-      <div
-        className="
-          flex
-          w-full
-          flex-col
-          gap-3
-          pt-1
-          sm:flex-row
-        "
-      >
-        <Link
-          to={'/addtocart'}
-          className="
-            w-full
-            rounded-xl
-            
-            bg-[#FF00E533]
-            py-3
-            text-sm
-            font-medium
-            text-white
-            transition-all
-     
-            sm:flex-1
-            text-center
-                hover:border-[#EF2CC5]
-            hover:bg-gradient-to-t
-            hover:from-[#FF00E533]
-            hover:to-[#99008ACC]
-            hover:shadow-[0_14px_14px_0_#7F0A7B63]
-          "
-        >
-          افزودن به سبد خرید        </Link>
+   <div className="w-full pt-1">
+  <Link
+    to="/addtocart"
+    className="
+      flex w-full items-center justify-center gap-2
+      rounded-xl
+      bg-[#FF00E533]
+      py-3
+      text-sm
+      font-medium
+      text-white
+      text-center
+      transition-all
+      hover:border-[#EF2CC5]
+      hover:bg-gradient-to-t
+      hover:from-[#FF00E533]
+      hover:to-[#99008ACC]
+      hover:shadow-[0_14px_14px_0_#7F0A7B63]
+      sm:flex-1
+    "
+  >
+    <span>افزودن به سبد خرید</span>
 
-
-      </div>
+    <img
+      src="/Shopping Bag Add.png"
+      alt="افزودن به سبد خرید"
+      className="h-5 w-5 object-contain"
+    />
+  </Link>
+</div>
     </div>
   </aside>
 );

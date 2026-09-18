@@ -60,24 +60,36 @@ function ProductRow({
 }) {
 
 return (
-  <div
-    dir="rtl"
-    className="
-      flex
-      w-full
-      flex-col
-      items-start
-      gap-4
-      rounded-2xl
-      px-4
-      py-4
-      sm:px-6
-      sm:py-5
-      lg:flex-row
-      lg:items-center
-      lg:rounded-[28px]
-    "
-  >
+<div
+  dir="rtl"
+  className="
+    flex
+    w-full
+    flex-col
+    items-start
+    gap-4
+
+    rounded-2xl
+    border
+    border-white/10
+
+    bg-white/[0.08]
+    backdrop-blur-xl
+
+    px-4
+    py-4
+
+    shadow-lg
+    shadow-black/10
+
+    sm:px-6
+    sm:py-5
+
+    lg:flex-row
+    lg:items-center
+    lg:rounded-[28px]
+  "
+>
     {/* تصویر */}
     <div
       className="

@@ -311,34 +311,43 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
       font-medium
       text-white
       transition-all
-      hover:bg-[#FF00E555]
       sm:h-12
       sm:w-14
       sm:text-3xl
+
+     hover:border
+      border-[#EF2CC5]
+      bg-gradient-to-t
+      from-[#FF00E533]
+      to-[#99008ACC]
+            hover:shadow-[0_10px_20px_0_#7F0A7B63]
+
     "
   >
     +
   </button>
 
-  {/* Sample */}
-  <Link 
-  to={'/'}
-    className="
-      h-[50px]
-     
-      rounded-xl
-      bg-[#FF00E533]
-      px-3
-      py-2
-      text-xs
-      text-center
-      text-white
-      sm:px-4
-      sm:text-sm
-    "
-  >
-    10 کیلو گرم نمونه
-  </Link>
+
+<Link
+  to="/kiloofproducts"
+  className="
+    flex
+    h-11
+    items-center
+    justify-center
+    rounded-xl
+    bg-[#FF00E533]
+    px-3
+    text-center
+    text-xs
+    text-white
+    sm:h-12
+    sm:px-4
+    sm:text-sm
+  "
+>
+  10 کیلو گرم نمونه
+</Link>
 
   {/* Minus */}
   <button

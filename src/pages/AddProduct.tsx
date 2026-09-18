@@ -476,309 +476,361 @@ export default function ProductForm() {
 
 
 return (
+<div
+  dir="rtl"
+  className="
+    mx-auto
+    w-full
+    max-w-4xl
+    rounded-2xl
+    p-4
+    shadow-2xl
+    sm:rounded-[32px]
+    sm:p-6
+    lg:p-8
+  "
+>
+  {/* فرم اصلی */}
   <div
-    dir="rtl"
     className="
-      mx-auto
-      w-full
-      max-w-4xl
-      rounded-2xl
-      sm:rounded-[32px]
-      p-4
-      sm:p-6
-      lg:p-8
-      shadow-2xl
+      grid
+      grid-cols-1
+      gap-8
+      lg:grid-cols-2
+      lg:gap-x-10
+      lg:gap-y-6
     "
   >
-    {/* فرم اصلی */}
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-6">
 
-      {/* ستون اول */}
-      <div
-        dir="rtl"
-        className="flex min-w-0 flex-col gap-6"
-      >
-        <EditableField
-          label="قیمت محصول"
-          value={data.price}
-          onChange={(v) => setField("price", v)}
-        />
-
-        <VerifiableField
-          label="درصد خلوص"
-          value={data.purity}
-          onChange={(v) =>
-            setData((d) => ({
-              ...d,
-              purity: v,
-            }))
-          }
-          verified={data.purityVerified}
-          onToggleVerified={() =>
-            setData((d) => ({
-              ...d,
-              purityVerified: !d.purityVerified,
-            }))
-          }
-        />
-
-        <EditableField
-          label="کشور سازنده"
-          value={data.originCountry}
-          onChange={(v) =>
-            setField("originCountry", v)
-          }
-        />
-
-        <EditableField
-          label="آدرس وبسایت"
-          value={data.websiteUrl}
-          onChange={(v) =>
-            setField("websiteUrl", v)
-          }
-        />
-
-        {/* حوزه تخصصی */}
-        <div
-          dir="rtl"
-          className="
-            flex
-            min-w-0
-            flex-col
-            items-end
-            gap-3
-            border-b
-            border-white/15
-            pb-4
-          "
-        >
-          <select
-            name="specialty"
-            dir="rtl"
-            className="
-              w-full
-              min-w-0
-              bg-transparent
-              text-right
-              text-sm
-              text-white
-              outline-none
-            "
-          >
-            <option value="" className="text-black">
-              *حوزه تخصصی
-            </option>
-
-            <option value="کربن" className="text-black">
-              کربن
-            </option>
-
-            <option value="اسید" className="text-black">
-              اسید
-            </option>
-
-            <option value="سولفات" className="text-black">
-              سولفات
-            </option>
-          </select>
-        </div>
-
-        {/* فایل PDF */}
-        <DocUploadTile
-          label="فایل جدول محصول را با پسوند pdf آپلود کنید"
-          file={data.productSheet}
-          onFile={(f) =>
-            setData((d) => ({
-              ...d,
-              productSheet: f,
-            }))
-          }
-        />
-      </div>
-
-      {/* ستون دوم */}
-      <div
-        dir="rtl"
-        className="flex min-w-0 flex-col gap-6"
-      >
-
-        {/* تصاویر */}
-        <div className="min-w-0">
-          <div className="mb-3 text-right text-sm text-white/80">
-            تصاویر محصول{" "}
-            <span className="text-white">*</span>
-          </div>
-
-          <div
-            dir="rtl"
-            className="
-              flex
-              w-full
-              min-w-0
-              flex-col
-              gap-3
-              sm:flex-row
-            "
-          >
-            {/* چهار تصویر کوچک */}
-            <div
-              className="
-                grid
-                w-full
-                grid-cols-2
-                gap-3
-                sm:w-auto
-                sm:shrink-0
-              "
-            >
-              <ImageSlot
-                file={data.images[0]}
-                onChange={(f) => setImageAt(0, f)}
-              />
-
-              <ImageSlot
-                file={data.images[1]}
-                onChange={(f) => setImageAt(1, f)}
-              />
-
-              <ImageSlot
-                file={data.images[2]}
-                onChange={(f) => setImageAt(2, f)}
-              />
-
-              <ImageSlot
-                file={data.images[3]}
-                onChange={(f) => setImageAt(3, f)}
-              />
-            </div>
-
-            {/* تصویر بزرگ */}
-            <div
-              className="
-                aspect-square
-                w-full
-                sm:w-[calc(2*5.5rem+0.75rem)]
-                sm:shrink-0
-              "
-            >
-              <ImageSlot
-                file={data.images[4]}
-                onChange={(f) => setImageAt(4, f)}
-                large
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* توضیحات */}
-        <div
-          dir="rtl"
-          className="
-            flex
-            min-h-[18rem]
-            flex-1
-            flex-col
-            rounded-2xl
-            sm:rounded-3xl
-            border
-            border-white/20
-            p-4
-            sm:p-5
-          "
-        >
-          <div
-            className="
-              mb-3
-              text-right
-              text-sm
-              leading-6
-              text-white/80
-            "
-          >
-            توضیحات{" "}
-            <span className="text-white">*</span>{" "}
-            <span className="text-xs text-white/40">
-              (۱۰۰ کلمه تا ۱۰۰۰ کلمه)
-            </span>
-          </div>
-
-          <textarea
-            dir="rtl"
-            value={data.description}
-            onChange={(e) =>
-              setData((d) => ({
-                ...d,
-                description: e.target.value,
-              }))
-            }
-            placeholder="ویژگی‌ها، کاربرد و مشخصات محصول را بنویسید..."
-            className="
-              min-h-32
-              flex-1
-              resize-none
-              overflow-y-auto
-              bg-transparent
-              text-right
-              text-sm
-              leading-7
-              text-white
-              placeholder-white/30
-              outline-none
-            "
-          />
-        </div>
-      </div>
-    </div>
-
-    {/* دکمه‌ها */}
+    {/* ستون سمت راست → تصاویر + توضیحات */}
     <div
       dir="rtl"
       className="
-        mt-8
-        grid
-        grid-cols-1
-        gap-3
-        sm:grid-cols-2
-        sm:gap-4
+        order-1
+        flex
+        min-w-0
+        flex-col
+        gap-6
+        lg:order-1
       "
     >
-      <button
-        type="button"
-        className="
-          w-full
-          rounded-2xl
-          bg-white
-          py-3.5
-          text-sm
-          font-medium
-          text-indigo-700
-          transition
-          hover:bg-white/90
-          sm:py-4
-        "
-      >
-        ثبت محصول
-      </button>
 
-      <button
-        type="button"
+      {/* تصاویر */}
+      <div className="min-w-0">
+
+        <div className="mb-3 text-right text-sm text-white/80">
+          تصاویر محصول{" "}
+          <span className="text-white">*</span>
+        </div>
+
+        <div
+          dir="rtl"
+          className="
+            flex
+            w-full
+            min-w-0
+            flex-col
+            gap-3
+            sm:flex-row
+          "
+        >
+
+          {/* چهار تصویر کوچک */}
+          <div
+            className="
+              grid
+              w-full
+              grid-cols-2
+              gap-3
+              sm:w-auto
+              sm:shrink-0
+            "
+          >
+            <ImageSlot
+              file={data.images[0]}
+              onChange={(f) => setImageAt(0, f)}
+            />
+
+            <ImageSlot
+              file={data.images[1]}
+              onChange={(f) => setImageAt(1, f)}
+            />
+
+            <ImageSlot
+              file={data.images[2]}
+              onChange={(f) => setImageAt(2, f)}
+            />
+
+            <ImageSlot
+              file={data.images[3]}
+              onChange={(f) => setImageAt(3, f)}
+            />
+          </div>
+
+          {/* تصویر بزرگ */}
+          <div
+            className="
+              aspect-square
+              w-full
+              sm:w-[calc(2*5.5rem+0.75rem)]
+              sm:shrink-0
+            "
+          >
+            <ImageSlot
+              file={data.images[4]}
+              onChange={(f) => setImageAt(4, f)}
+              large
+            />
+          </div>
+
+        </div>
+      </div>
+
+      {/* توضیحات */}
+      <div
+        dir="rtl"
         className="
-          w-full
+          flex
+          min-h-[18rem]
+          flex-1
+          flex-col
           rounded-2xl
-          bg-white/10
-          py-3.5
-          text-sm
-          font-medium
-          text-white
-          transition
-          hover:bg-white/15
-          sm:py-4
+          border
+          border-white/20
+          p-4
+          sm:rounded-3xl
+          sm:p-5
         "
       >
-        انصراف
-      </button>
+
+        <div
+          className="
+            mb-3
+            text-right
+            text-sm
+            leading-6
+            text-white/80
+          "
+        >
+          توضیحات{" "}
+          <span className="text-white">*</span>{" "}
+          <span className="text-xs text-white/40">
+            (۱۰۰ کلمه تا ۱۰۰۰ کلمه)
+          </span>
+        </div>
+
+        <textarea
+          dir="rtl"
+          value={data.description}
+          onChange={(e) =>
+            setData((d) => ({
+              ...d,
+              description: e.target.value,
+            }))
+          }
+          placeholder="ویژگی‌ها، کاربرد و مشخصات محصول را بنویسید..."
+          className="
+            min-h-32
+            flex-1
+            resize-none
+            overflow-y-auto
+            bg-transparent
+            text-right
+            text-sm
+            leading-7
+            text-white
+            placeholder-white/30
+            outline-none
+          "
+        />
+
+      </div>
+    </div>
+
+
+    {/* ستون سمت چپ → فیلدها */}
+    <div
+      dir="rtl"
+      className="
+        order-2
+        flex
+        min-w-0
+        flex-col
+        gap-6
+        lg:order-2
+      "
+    >
+
+      <EditableField
+        label="قیمت محصول"
+        value={data.price}
+        onChange={(v) => setField("price", v)}
+      />
+
+      <VerifiableField
+        label="درصد خلوص"
+        value={data.purity}
+        onChange={(v) =>
+          setData((d) => ({
+            ...d,
+            purity: v,
+          }))
+        }
+        verified={data.purityVerified}
+        onToggleVerified={() =>
+          setData((d) => ({
+            ...d,
+            purityVerified: !d.purityVerified,
+          }))
+        }
+      />
+
+      <EditableField
+        label="کشور سازنده"
+        value={data.originCountry}
+        onChange={(v) =>
+          setField("originCountry", v)
+        }
+      />
+
+      <EditableField
+        label="آدرس وبسایت"
+        value={data.websiteUrl}
+        onChange={(v) =>
+          setField("websiteUrl", v)
+        }
+      />
+
+      {/* حوزه تخصصی */}
+      <div
+        dir="rtl"
+        className="
+          flex
+          min-w-0
+          flex-col
+          items-end
+          gap-3
+          border-b
+          border-white/15
+          pb-4
+        "
+      >
+        <select
+          name="specialty"
+          dir="rtl"
+          className="
+            w-full
+            min-w-0
+            bg-transparent
+            text-right
+            text-sm
+            text-white
+            outline-none
+          "
+        >
+          <option
+            value=""
+            className="text-black"
+          >
+            *حوزه تخصصی
+          </option>
+
+          <option
+            value="کربن"
+            className="text-black"
+          >
+            کربن
+          </option>
+
+          <option
+            value="اسید"
+            className="text-black"
+          >
+            اسید
+          </option>
+
+          <option
+            value="سولفات"
+            className="text-black"
+          >
+            سولفات
+          </option>
+        </select>
+      </div>
+
+      {/* فایل PDF */}
+      <DocUploadTile
+        label="فایل جدول محصول را با پسوند pdf آپلود کنید"
+        file={data.productSheet}
+        onFile={(f) =>
+          setData((d) => ({
+            ...d,
+            productSheet: f,
+          }))
+        }
+      />
+
     </div>
   </div>
+
+
+  {/* دکمه‌ها */}
+  <div
+    dir="rtl"
+    className="
+      mt-8
+      grid
+      grid-cols-1
+      gap-3
+      sm:grid-cols-2
+      sm:gap-4
+    "
+  >
+
+    {/* ثبت محصول → راست */}
+    <button
+      type="button"
+      className="
+        order-1
+        w-full
+        rounded-2xl
+        bg-white
+        py-3.5
+        text-sm
+        font-medium
+        text-indigo-700
+        transition
+        hover:bg-white/90
+        sm:order-1
+        sm:py-4
+      "
+    >
+      ثبت محصول
+    </button>
+
+    {/* انصراف → چپ */}
+    <button
+      type="button"
+      className="
+        order-2
+        w-full
+        rounded-2xl
+        bg-white/10
+        py-3.5
+        text-sm
+        font-medium
+        text-white
+        transition
+        hover:bg-white/15
+        sm:order-2
+        sm:py-4
+      "
+    >
+      انصراف
+    </button>
+
+  </div>
+</div>
 );
 
 
