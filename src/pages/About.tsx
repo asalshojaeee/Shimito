@@ -242,7 +242,7 @@ export default function CompanySignupForm() {
   </a>
 </div>
 
-{/* دکمه ثبت‌نام */}
+
 <button
   type="submit"
   className="
@@ -251,9 +251,7 @@ export default function CompanySignupForm() {
     w-full
     max-w-[513px]
     rounded-xl
-    bg-gradient-to-l
-    from-white
-    to-purple-100
+bg-[#FFFFFF]
     py-3.5
     text-sm
     font-semibold
@@ -273,8 +271,8 @@ export default function CompanySignupForm() {
     w-full
     flex-wrap
     items-center
-    justify-center
-    gap-x-8
+    justify-evenly
+   
     gap-y-4
     text-sm
     text-white/70

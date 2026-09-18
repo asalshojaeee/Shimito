@@ -95,10 +95,13 @@ const Specialties: React.FC = () => {
   <div
     className="
       grid
+      w-full
       grid-cols-3
       gap-2
       text-center
+
       sm:gap-3
+
       md:grid-cols-6
       md:gap-5
     "
@@ -109,15 +112,18 @@ const Specialties: React.FC = () => {
         className={`
           flex
           min-w-0
+          min-h-[100px]
           flex-col
           items-center
           justify-center
 
           gap-2
           rounded-xl
+
           border
           border-white/10
           bg-white/5
+
           px-1
           py-3
 
@@ -126,10 +132,12 @@ const Specialties: React.FC = () => {
           backdrop-blur-xl
           shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]
 
+          sm:min-h-[120px]
           sm:gap-3
           sm:px-2
           sm:py-4
 
+          md:min-h-[140px]
           md:gap-4
           md:rounded-3xl
           md:px-3
@@ -140,15 +148,36 @@ const Specialties: React.FC = () => {
           ${index === 6 ? "md:col-start-2" : ""}
         `}
       >
-        <Icon />
+        {/* Icon */}
+        <div
+          className="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
 
+            sm:h-11
+            sm:w-11
+
+            md:h-12
+            md:w-12
+          "
+        >
+          <Icon />
+        </div>
+
+        {/* Title */}
         {title !== "" && (
           <div
             className="
+              w-full
               max-w-full
-              whitespace-nowrap
+
               overflow-hidden
               text-ellipsis
+              whitespace-nowrap
 
               text-[10px]
               font-thin

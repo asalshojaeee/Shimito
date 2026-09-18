@@ -64,7 +64,7 @@ function EditableField({
         />
       </div>
 
-
+{/* 
       <button
         type="button"
         onClick={() => {
@@ -77,7 +77,7 @@ function EditableField({
         aria-label={`ویرایش ${label}`}
       >
         <Pencil size={15} />
-      </button>
+      </button> */}
     </div>
   );
 }
@@ -117,7 +117,7 @@ function VerifiableField({
       </div>
 
 
-      <div className="mr-4 flex shrink-0 items-center gap-1.5">
+      {/* <div className="mr-4 flex shrink-0 items-center gap-1.5">
         <button
           type="button"
           onClick={() =>
@@ -153,7 +153,7 @@ function VerifiableField({
             strokeWidth={3}
           />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -808,7 +808,6 @@ return (
       ثبت محصول
     </button>
 
-    {/* انصراف → چپ */}
     <button
       type="button"
       className="

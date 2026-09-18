@@ -125,7 +125,7 @@ function VerifiableField({
           onClick={() =>
             verified && onToggleVerified()
           }
-          className={`flex h-6 w-6 items-center justify-center rounded-md transition ${
+          className={`flex  items-center justify-center rounded-md transition ${
             !verified
               ? "bg-rose-400 text-white"
               : "bg-transparent text-white/30 hover:text-white/60"
@@ -133,8 +133,9 @@ function VerifiableField({
           aria-label="رد کردن"
         >
           <X
-            size={14}
+            size={17}
             strokeWidth={3}
+            className="bg-red-400 text-black"
           />
         </button>
 
@@ -143,7 +144,7 @@ function VerifiableField({
           onClick={() =>
             !verified && onToggleVerified()
           }
-          className={`flex h-6 w-6 items-center justify-center rounded-md transition ${
+          className={`flex   items-center justify-center  transition rounded-md text-black ${
             verified
               ? "bg-white text-indigo-600"
               : "bg-transparent text-white/30 hover:text-white/60"
@@ -151,7 +152,8 @@ function VerifiableField({
           aria-label="تایید"
         >
           <Check
-            size={14}
+          className="bg-white rounded-xl"
+            size={17}
             strokeWidth={3}
           />
         </button>

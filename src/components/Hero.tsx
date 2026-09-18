@@ -23,8 +23,7 @@ const Stat: React.FC<StatProps> = ({ number, label }) => {
 
 const Hero: React.FC = () => {
   return (
-    <section className='relative min-h-[100vh] w-full overflow-hidden text-white flex justify-center items-center'>
-
+<section className='relative min-h-[100vh] w-full overflow-hidden text-white flex justify-center py-24'>
 
       <div className='absolute inset-0'>
         <img
@@ -41,11 +40,10 @@ const Hero: React.FC = () => {
       </div>
 
 
-      <div className='relative hidden md:grid w-full max-w-[85vw] grid-cols-2 gap-5 lg:gap-24 mt-16'>
+<div className='relative hidden md:grid w-full max-w-[85vw] grid-cols-2 gap-5 lg:gap-24 my-16'>          <div className='col-start-2 row-start-1 flex items-center justify-center w-full'>
 
-        <div className='col-start-2 row-start-1 flex items-center justify-center w-full'>
+          <div className='w-full max-w-xl rounded-[50px] bg-[#EF2CC51A] p-5 md:p-10 backdrop-blur-xl shadow-[0_10px_60px_-15px_rgba(0,0,0,0.6)] flex flex-col items-center md:items-end gap-6 md:gap-8'>
 
-          <div className='w-full max-w-xl rounded-[50px] bg-[#EF2CC51A] p-6 md:p-10 backdrop-blur-xl shadow-[0_10px_60px_-15px_rgba(0,0,0,0.6)] flex flex-col items-center md:items-end gap-6 md:gap-8'>
             <h1 className='w-full text-3xl flex flex-col items-center leading-tight tracking-tight gap-2'>
 
               <span className='font-normal text-center'>
@@ -60,15 +58,19 @@ const Hero: React.FC = () => {
             </h1>
 
             <p className='text-xs md:text-sm w-full text-center md:text-right text-white/85'>
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+              و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه
+              و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+              تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای
+              کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال
+              و آینده، شناخت فراوان جامعه و متخصصان را می طلبد.
             </p>
-
 
             <div className='mt-4 md:mt-6 w-full flex justify-center md:justify-end'>
 
               <a
                 href='#more'
-                className='w-full md:w-auto inline-flex items-center justify-center rounded-xl border border-[#A855F766] bg-[#A855F71A] px-5 py-2.5 text-sm md:text-base text-white shadow-inner transition  focus:outline-none focus:ring-2 focus:ring-white/30'
+                className='w-full md:w-auto inline-flex items-center justify-center rounded-xl border border-[#A855F766] bg-[#A855F71A] px-5 py-2.5 text-sm md:text-base text-white shadow-inner transition focus:outline-none focus:ring-2 focus:ring-white/30'
               >
                 موارد بیشتر
               </a>
@@ -79,11 +81,7 @@ const Hero: React.FC = () => {
 
         </div>
 
-
-
         <div className='col-start-1 row-start-1 flex flex-col items-center justify-center w-full'>
-
-
 
           <div className='flex flex-col justify-center items-center gap-4 mt-8'>
 
@@ -105,7 +103,6 @@ const Hero: React.FC = () => {
               />
 
             </div>
-
 
             <p className='max-w-[64ch] text-sm text-center text-white/80'>
               سطر آنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز

@@ -135,117 +135,175 @@ export default function ProfileEditor() {
 
   // const wordCount = description.trim() ? description.trim().split(/\s+/).length : 0;
 
-  return (
-
-
-<div
-  dir="rtl"
-  className="
-    relative
-    min-h-screen
-    overflow-hidden
-    bg-[#0d0818]
-    font-sans
-    text-white
-  "
->
-  {/* Background Image */}
+return (
   <div
+    dir="rtl"
     className="
-      pointer-events-none
-      absolute
-      left-[-250px]
-      top-0
-      z-0
-      h-full
-      w-[75%]
-      bg-contain
-      bg-left
-      bg-no-repeat
+      relative
+      min-h-screen
+      w-full
+      overflow-hidden
+      bg-[#0d0818]
+      font-sans
+      text-white
     "
-    style={{
-      backgroundImage: "url('/image 3.png')",
-    }}
-  />
-
-  {/* Glow */}
-  <div className="pointer-events-none absolute inset-0 z-0">
-    <div className="absolute -left-40 top-0 h-[600px] w-[600px] rounded-full bg-fuchsia-600/30 blur-[140px]" />
-
-    <div className="absolute left-1/3 top-1/4 h-[500px] w-[500px] rounded-full bg-indigo-600/30 blur-[140px]" />
-
-    <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-violet-700/25 blur-[140px]" />
-  </div>
-
-  {/* Content */}
-<div className="relative z-10 mx-auto max-w-7xl px-6 pt-28 pb-10">
+  >
+    {/* =========================
+        BACKGROUND IMAGE
+        ========================= */}
     <div
       className="
-        mt-8
-        flex
-        flex-col
-        overflow-hidden
-        rounded-3xl
-        border
-        border-white/10
-        bg-white/[0.06]
-        backdrop-blur-xl
-        lg:flex-row
+        pointer-events-none
+        fixed
+        inset-0
+        z-0
+        bg-cover
+        bg-left-top
+        bg-no-repeat
+      "
+      style={{
+        backgroundImage: "url('/image 3.png')",
+      }}
+    />
+
+
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+   
+      <div
+        className="
+          absolute
+          left-[-160px]
+          top-0
+          h-[600px]
+          w-[600px]
+          rounded-full
+          bg-fuchsia-600/30
+          blur-[140px]
+        "
+      />
+
+      {/* Glow 2 - ثابت */}
+      <div
+        className="
+          absolute
+          left-[500px]
+          top-[220px]
+          h-[500px]
+          w-[500px]
+          rounded-full
+          bg-indigo-600/30
+          blur-[140px]
+        "
+      />
+
+      {/* Glow 3 - ثابت */}
+      <div
+        className="
+          absolute
+          right-[-160px]
+          bottom-[-100px]
+          h-[500px]
+          w-[500px]
+          rounded-full
+          bg-violet-700/25
+          blur-[140px]
+        "
+      />
+    </div>
+
+    {/* =========================
+        CONTENT
+        ========================= */}
+    <div
+      className="
+        relative
+        z-10
+        mx-auto
+        w-full
+        max-w-7xl
+        px-6
+        pb-10
+        pt-28
       "
     >
-
-      <aside
+      <div
         className="
-          w-full
-          shrink-0
-          p-8
-          lg:w-72
-        "
-      >
-        <h2 className="mb-6 text-right text-xl font-bold text-white">
-          مدیریت محصول
-        </h2>
-
-        <nav className="flex flex-col gap-2">
-          {SIDEBAR_ITEMS.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) =>
-                `rounded-xl px-4 py-3 text-right text-sm transition ${
-                  isActive
-                    ? "bg-white/15 text-white"
-                    : "text-white/70 hover:bg-white/5 hover:text-white"
-                }`
-              }
-            >
-              {item.title}
-            </NavLink>
-          ))}
-        </nav>
-      </aside>
-
-      <section
-        className="
-          min-w-0
-          flex-1
-          border-t
+          mt-8
+          flex
+          flex-col
+          overflow-hidden
+          rounded-3xl
+          border
           border-white/10
-          p-10
-          lg:border-t-0
-          lg:border-r
-          lg:border-white/10
+          bg-white/[0.06]
+          backdrop-blur-xl
+
+          lg:flex-row
         "
       >
-        <Outlet />
-      </section>
+        {/* =========================
+            SIDEBAR
+            ========================= */}
+        <aside
+          className="
+            w-full
+            shrink-0
+            p-8
 
+            lg:w-72
+          "
+        >
+          <h2
+            className="
+              mb-6
+              text-right
+              text-xl
+              font-bold
+              text-white
+            "
+          >
+            مدیریت محصول
+          </h2>
+
+          <nav className="flex flex-col gap-2">
+            {SIDEBAR_ITEMS.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `rounded-xl px-4 py-3 text-right text-sm transition ${
+                    isActive
+                      ? "bg-white/15 text-white"
+                      : "text-white/70 hover:bg-white/5 hover:text-white"
+                  }`
+                }
+              >
+                {item.title}
+              </NavLink>
+            ))}
+          </nav>
+        </aside>
+
+        {/* =========================
+            CONTENT
+            ========================= */}
+        <section
+          className="
+            min-w-0
+            flex-1
+            border-t
+            border-white/10
+            p-10
+
+            lg:border-t-0
+            lg:border-r
+            lg:border-white/10
+          "
+        >
+          <Outlet />
+        </section>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-
-  );
+);
 }
