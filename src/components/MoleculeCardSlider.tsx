@@ -65,42 +65,54 @@ const MoleculeCardSlider: React.FC<MoleculeCardSliderProps> = ({ items }) => {
                 className="absolute shrink-0"
                 style={{
                   zIndex: items.length - position,
-
-                  right: `
-                    calc(50% - 560px + ${position * 235}px)
-                  `,
+right: `
+  calc(
+    0%
+    - min(35vw, 700px)
+    + ${position * 15}vw
+  )
+`,
 
                   transform: `
                     translateY(${position === 0 ? "-25px" : "0px"})
                   `,
-
-                  width: "280px",
+                  width: "clamp(240px, 19vw, 280px)",
                   minHeight: "390px",
                 }}
               >
-                <article
-                  className="
-                    group
-                    relative
-                    w-[280px]
-                    min-h-[390px]
 
-                    rounded-[24px]
+<article
+  className="
+    group
+    relative
 
-                    backdrop-blur-xl
-                    p-5
+    w-full
+    min-h-[390px]
 
-                    flex
-                    flex-col
-                    items-center
+    rounded-[24px]
 
-                    transition-all
-                    duration-300
+    bg-white/5
 
-                    hover:z-50
-                    hover:-translate-y-2
-                  "
-                >
+    backdrop-blur-xl
+    md:backdrop-blur-2xl
+    lg:backdrop-blur-[35px]
+    xl:backdrop-blur-[45px]
+
+    p-5
+
+    flex
+    flex-col
+    items-center
+
+    transition-all
+    duration-300
+
+    hover:z-50
+    hover:-translate-y-2
+  "
+>
+
+
                   {/* Image */}
                   <div
                     className="
