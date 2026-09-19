@@ -93,7 +93,7 @@ interface ProductSidebarProps {
 
 const ProductSidebar: React.FC<ProductSidebarProps> = ({
   product,
-  onOpenSampleModal,
+
 }) => (
   <aside
     className="

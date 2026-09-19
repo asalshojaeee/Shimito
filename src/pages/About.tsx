@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { FileText, X, Facebook } from "lucide-react";
+import { FileText, Facebook } from "lucide-react";
 import { Link } from "react-router";
 
 interface FormData {
@@ -18,13 +18,12 @@ export default function CompanySignupForm() {
     address: "",
   });
 
-  const [tags, setTags] = useState<string[]>([
+  const [tags, ] = useState<string[]>([
     "مکانیک",
     "الکترونیک",
     "هوش مصنوعی",
   ]);
 
-  const [tagInput, setTagInput] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
@@ -38,23 +37,23 @@ export default function CompanySignupForm() {
         }));
       };
 
-  const removeTag = (tag: string) => {
-    setTags((prev) => prev.filter((t) => t !== tag));
-  };
+  // const removeTag = (tag: string) => {
+  //   setTags((prev) => prev.filter((t) => t !== tag));
+  // };
 
-  const addTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && tagInput.trim()) {
-      e.preventDefault();
+  // const addTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (e.key === "Enter" && tagInput.trim()) {
+  //     e.preventDefault();
 
-      const newTag = tagInput.trim();
+  //     const newTag = tagInput.trim();
 
-      if (!tags.includes(newTag)) {
-        setTags((prev) => [...prev, newTag]);
-      }
+  //     if (!tags.includes(newTag)) {
+  //       setTags((prev) => [...prev, newTag]);
+  //     }
 
-      setTagInput("");
-    }
-  };
+  //     setTagInput("");
+  //   }
+  // };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

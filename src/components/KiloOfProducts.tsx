@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Download, FileText } from "lucide-react";
-import { Link } from "react-router";
 
 interface ProductTag {
     id: string;

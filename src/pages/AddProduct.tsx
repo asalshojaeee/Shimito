@@ -1,8 +1,6 @@
 import { useState, useRef } from "react";
 import {
-  Pencil,
-  X,
-  Check,
+
   ImagePlus,
   FileText,
   Trash2,
@@ -88,8 +86,6 @@ function VerifiableField({
   label,
   value,
   onChange,
-  verified,
-  onToggleVerified,
 }: {
   label: string;
   value: string;
