@@ -352,7 +352,7 @@ const Navbar: React.FC = () => {
           </NavLink>
 
           <NavLink
-            to="/our-team"
+            to="/our-products"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
               `${linkBase} ${
@@ -363,17 +363,6 @@ const Navbar: React.FC = () => {
             محصولات
           </NavLink>
 
-          <NavLink
-            to="/product"
-            onClick={() => setMenuOpen(false)}
-            className={({ isActive }) =>
-              `${linkBase} ${
-                isActive ? linkActive : linkInactive
-              }`
-            }
-          >
-            محصول
-          </NavLink>
 
           <NavLink
             to="/services"
