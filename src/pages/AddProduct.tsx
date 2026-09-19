@@ -191,6 +191,8 @@ function VerifiableField({
 
 
 function DocUploadTile({
+
+  
   label,
   file,
   onFile,
@@ -204,7 +206,7 @@ function DocUploadTile({
   return (
     <div
       dir="rtl"
-      className="flex items-center gap-4"
+      className="flex items-center gap-4 flex-row-reverse"
     >
      
       <span
@@ -701,7 +703,7 @@ return (
         }
       />
 
-      {/* حوزه تخصصی */}
+   
       <div
         dir="rtl"
         className="
@@ -758,10 +760,11 @@ return (
         </select>
       </div>
 
-      {/* فایل PDF */}
+    
       <DocUploadTile
         label="فایل جدول محصول را با پسوند pdf آپلود کنید"
         file={data.productSheet}
+        
         onFile={(f) =>
           setData((d) => ({
             ...d,
@@ -774,7 +777,7 @@ return (
   </div>
 
 
-  {/* دکمه‌ها */}
+
   <div
     dir="rtl"
     className="

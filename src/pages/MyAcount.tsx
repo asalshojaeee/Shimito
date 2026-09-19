@@ -237,7 +237,7 @@ function UploadTile({
         {icon}
       </button>
 
-      {/* Label - Left */}
+  
       <span
         className="
           min-w-0
@@ -434,7 +434,7 @@ return (
       />
     </div>
 
-    {/* Specialty - سمت چپ */}
+   
     <div
       dir="rtl"
       className="

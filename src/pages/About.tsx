@@ -171,30 +171,62 @@ export default function CompanySignupForm() {
 
  
   <div className="order-2">
-    <label className="mb-3 block text-sm text-white/70">
-      <span className="text-white">*</span>
-      {" "}
-      حوزه تخصصی
-    </label>
 
-    <input
-      type="text"
-      value={tagInput}
-      onChange={(e) => setTagInput(e.target.value)}
-      onKeyDown={addTag}
+
+    <div
+      dir="rtl"
       className="
-        w-full
-        border-b
-        border-white/25
-        bg-transparent
-        pb-2
-        text-sm
-        text-white
-        outline-none
-        transition-colors
-        focus:border-fuchsia-400
+        flex
+        min-w-0
+        flex-col
+        items-end
+        gap-3
+    
+        pb-4
       "
-    />
+    >
+      <select
+        name="specialty"
+        dir="rtl"
+        className="
+          w-full
+          min-w-0
+          bg-transparent
+          text-right
+          text-sm
+          text-white
+          outline-none
+        "
+      >
+        <option
+          value=""
+          className="text-black"
+        >
+          *حوزه تخصصی
+        </option>
+
+        <option
+          value="کربن"
+          className="text-black"
+        >
+          کربن
+        </option>
+
+        <option
+          value="اسید"
+          className="text-black"
+        >
+          اسید
+        </option>
+
+        <option
+          value="سولفات"
+          className="text-black"
+        >
+          سولفات
+        </option>
+      </select>
+    </div>
   </div>
 </div>
 
@@ -264,7 +296,7 @@ bg-[#FFFFFF]
   ثبت نام شرکت
 </button>
 
-{/* ثبت‌نام با شبکه‌های اجتماعی */}
+
 <div
   className="
     flex
