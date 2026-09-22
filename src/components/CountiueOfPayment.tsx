@@ -342,11 +342,12 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
     text-xs
     text-white
     sm:h-12
-    sm:px-4
+    sm:px-4 
+    gap-2
     sm:text-sm
   "
 >
-  10 کیلو گرم نمونه
+ {quantity}<span>کیلو گرم نمونه</span>
 </Link>
 
   {/* Minus */}

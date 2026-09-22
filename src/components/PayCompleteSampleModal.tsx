@@ -26,7 +26,7 @@ const PayCompleteSampleModal: React.FC<PayCompleteSampleModalProps> = ({
     return createPortal(
 
         <div
-            className="fixed  inset-0 z-[9999] flex items-center justify-center bg-[#A855F71A] backdrop-blur-sm px-4"
+            className="fixed  inset-0 z-[9999] flex items-center justify-center bg-[#A855F71A] backdrop-blur-md px-4"
         >
             <div
                 className="border border-[#A855F7]

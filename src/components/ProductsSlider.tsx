@@ -1,6 +1,6 @@
+import SectionTitle2 from './SectionTitle'
 
 import MoleculeCardSlider from './MoleculeCardSlider'
-import SectionTitle from './SectionTitle'
 
 const products = [
     {
@@ -39,21 +39,26 @@ const products = [
         descriptionFa: "گیرنده امواج الکترومغناطیسی ذهن برای ناوبری کاملاً بی‌سیم و بدون نیاز به دست در تست.",
         image: "/image 4.png",
     },
+     {
+        id: "6",
+        name: "پودر شیمیایی منیزیم سولفات",
+        descriptionFa: "گیرنده امواج الکترومغناطیسی ذهن برای ناوبری کاملاً بی‌سیم و بدون نیاز به دست در تست.",
+        image: "/image 4.png",
+    }
 ];
-
 const Products = () => {
-    return (
+  return (
+    <div className="w-full">
+      <SectionTitle2>
+        محصولات
+      </SectionTitle2>
 
-        <div>
-            <SectionTitle>محصولات</SectionTitle>
-            <MoleculeCardSlider
-                items={products}
-                interval={3000}
-            />
-        </div>
-    )
-}
-
-
+      <MoleculeCardSlider
+        items={products}
+        interval={3000}
+      />
+    </div>
+  );
+};
 
 export default Products
