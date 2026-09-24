@@ -328,27 +328,26 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   </button>
 
 
-<Link
-  to="/kiloofproducts"
+<button
   className="
-    flex
+     flex
     h-11
     items-center
     justify-center
+    gap-2
     rounded-xl
-    bg-[#FF00E533]
+    bg-[#FF00E5]/20
     px-3
     text-center
     text-xs
     text-white
     sm:h-12
-    sm:px-4 
-    gap-2
+    sm:px-4
     sm:text-sm
   "
 >
  {quantity}<span>کیلو گرم نمونه</span>
-</Link>
+</button>
 
   {/* Minus */}
   <button

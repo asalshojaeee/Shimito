@@ -3,6 +3,7 @@ import { Download, FileText } from "lucide-react";
 
 
 import PayCompleteSampleModal from "./PayCompleteSampleModal";
+import { Link } from "react-router";
 
 interface ProductTag {
   id: string;
@@ -278,8 +279,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
           sm:flex-row
         "
       >
-        <button
-          type="button"
+        <Link
+        to={'/kiloofproducts'}
           className="
             w-full
             rounded-xl
@@ -295,11 +296,12 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
             hover:bg-gradient-to-t
             hover:from-[#FF00E533]
             hover:to-[#99008ACC]
-            sm:flex-1
+            sm:flex-1 
+            text-center
           "
         >
           خرید کامل
-        </button>
+        </Link>
 
         <button
           type="button"
